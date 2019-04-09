@@ -1,0 +1,30 @@
+{
+  "name": "@henderea/quick-regex",
+  "version": "0.0.1",
+  "description": "An improved version of sed substitute mode",
+  "main": "index.js",
+  "repository": "git@github.com:henderea/quick-regex.git",
+  "author": "Eric Henderson <henderea@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "@zeit/ncc": "^0.17.4",
+    "yargs": "^13.2.2"
+  },
+  "scripts": {
+    "ncc:build": "yarn ncc:build:release",
+    "ncc:clean": "rm -rf dist",
+    "ncc:post-clean": "rm -rf dist/*.hbs && rm -rf dist/locales",
+    "ncc:build:release:build": "ncc build src/index.js -m -q -o dist",
+    "ncc:build:debug:build": "ncc build src/index.js -q -o dist",
+    "ncc:build:release": "yarn ncc:clean && yarn ncc:build:release:build && yarn ncc:post-clean",
+    "ncc:build:debug": "yarn ncc:clean && yarn ncc:build:debug:build && yarn ncc:post-clean",
+    "prepublishOnly": "yarn ncc:build"
+  },
+  "bin": {
+    "quick-regex": "./dist/index.js"
+  },
+  "files": [
+    "dist/**/*"
+  ]
+}
