@@ -36,10 +36,9 @@ const readAll = async (stream, encoding = 'utf8') => {
 (async () => {
     let matchRegex = new RegExp(options.match, options.noCase ? 'gi' : 'g');
     let replaceRegex = /(\\?)\$\{(\d+)\}/g;
-    console.log(options.replace);
     let input = await readAll(process.stdin);
     let rv = input.replace(matchRegex, (...args) => {
-        return options.replace.replace(replaceRegex, (m, s, i) => s == '\\' ? `\${${i}}` : (i > args.length - 2 ? m : args[i]));
+        return options.replace.replace(replaceRegex, (m, s, i) => s == '\\' ? `\${${i}}` : (i >= args.length - 2 ? m : (args[i] || '')));
     });
-    console.log(rv);
+    process.stdout.write(rv);
 })();
