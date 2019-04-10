@@ -15,6 +15,8 @@ const options = yargs
     .nargs('replace', 1)
     .boolean('no-case')
     .alias('no-case', 'i')
+    .boolean('one-line')
+    .alias('one-line', 'o')
     .argv;
 
 const readAll = async (stream, encoding = 'utf8') => {
@@ -34,7 +36,7 @@ const readAll = async (stream, encoding = 'utf8') => {
 };
 
 (async () => {
-    let matchRegex = new RegExp(options.match, options.noCase ? 'gi' : 'g');
+    let matchRegex = new RegExp(options.match, `g${options.noCase ? 'i' : ''}${options.oneLine ? '' : 'm'}`);
     let replaceRegex = /(\\?)\$\{(\d+)\}/g;
     let input = await readAll(process.stdin);
     let rv = input.replace(matchRegex, (...args) => {
