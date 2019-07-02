@@ -40,10 +40,22 @@ const readAll = async (stream, encoding = 'utf8') => {
 
 (async () => {
     let matchRegex = new RegExp(options['--match'], `g${options['--no-case'] ? 'i' : ''}${options['--one-line'] ? '' : 'm'}`);
-    let replaceRegex = /(\\?)\$\{(\d+)\}/g;
+    let replaceRegex = /(\\?)\$\{(\d+)(?:(\?)([^:}]*)(?::([^:}]*))?)?}/g;
     let input = await readAll(process.stdin);
     let rv = input.replace(matchRegex, (...args) => {
-        return options['--replace'].replace(replaceRegex, (m, s, i) => s == '\\' ? `\${${i}}` : (i >= args.length - 2 ? m : (args[i] || '')));
+        return options['--replace'].replace(replaceRegex, (m, s, i, q, w, e) => {
+            if(s == '\\') {
+                return m.slice(1);
+            }
+            if(i >= args.length - 2) {
+                return m;
+            }
+            v = args[i] || '';
+            if(q == '?') {
+                return (v && v.length > 0) ? w : (e || '');
+            }
+            return v;
+        });
     });
     process.stdout.write(rv);
 })();
