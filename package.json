@@ -9,7 +9,8 @@
   "private": false,
   "devDependencies": {
     "@zeit/ncc": "^0.20.2",
-    "arg": "^4.1.0"
+    "arg": "^4.1.0",
+    "xregexp": "^4.2.4"
   },
   "scripts": {
     "ncc:build": "yarn ncc:build:release",
