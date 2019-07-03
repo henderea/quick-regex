@@ -87,23 +87,23 @@ const readAll = async (stream, encoding = 'utf8') => {
 
 let replaceRegex = XRegExp(`\\$\\{(?<index>\\d+)(?<otherIndexes>(?:\\|\\d+)+)?(?:(?<question>\\?)(?<whenVal>[^:}]*)(?::(?<elseVal>[^:}]*))?|(?:(?<colon>:)(?:(?<hyphen>-)(?<fallback>[^{}]+)|(?<subStart>\\d+)(?::(?<subLen>\\d+))?)))?}`, 'g')
 
-// let rs = '\\${1\\}${1}${1?h:n} ${2:1} ${2:1:2} ${3:-${2}\\}} ${3:-a} ${5}';
-
 let isNil = (arg) => arg === null || typeof arg === 'undefined';
+
+let getMatches = (replaceString) => XRegExp.matchRecursive(replaceString, '\\$\\{', '}', 'g', {
+    valueNames: ['between', 'left', 'match', 'right'],
+    escapeChar: '\\'
+});
 
 let processReplace = (args, replaceString, left = null, right = null) => {
     if(!replaceString || replaceString.length == 0) {
         return '';
     }
-    let matches = XRegExp.matchRecursive(replaceString, '\\$\\{', '}', 'g', {
-        valueNames: ['between', 'left', 'match', 'right'],
-        escapeChar: '\\'
-    });
+    let matches = getMatches(replaceString);
 
     if(matches.length <= 1) {
         if(left && right) {
             return XRegExp.replace(`${left}${replaceString}${right}`, replaceRegex, (match) => {
-                let { index, otherIndexes, question, whenVal, elseVal, colon, hyphen, fallback, subStart, subLen } = match;//?
+                let { index, otherIndexes, question, whenVal, elseVal, colon, hyphen, fallback, subStart, subLen } = match;
                 if(index >= args.length - 2) {
                     return match;
                 }
@@ -154,6 +154,9 @@ let processReplace = (args, replaceString, left = null, right = null) => {
             ind++;
             r = matches[ind].value;
             ind++
+            while(getMatches(m).length > 1) {
+                m = processReplace(args, m, l, r);
+            }
             rv.push(processReplace(args, m, l, r));
         }
     }
