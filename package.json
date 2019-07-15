@@ -10,7 +10,7 @@
   "devDependencies": {
     "@henderea/simple-colors": "^1.1.2",
     "@zeit/ncc": "^0.20.4",
-    "arg": "^4.1.0",
+    "arg": "^4.1.1",
     "xregexp": "^4.2.4"
   },
   "scripts": {
