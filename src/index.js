@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 const arg = require('arg');
-const XRegExp = require('xregexp');
+const XRegExp = require('xregexp/lib/xregexp');
+require('xregexp/lib/addons/matchrecursive')(XRegExp);
 const { HelpTextMaker, styles } = require('@henderea/simple-colors/helpText');
 const { green, red, magenta } = styles;
 
