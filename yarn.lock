@@ -10,12 +10,12 @@
     core-js "^2.6.5"
     regenerator-runtime "^0.13.2"
 
-"@henderea/simple-colors@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@henderea/simple-colors/-/simple-colors-1.1.2.tgz#d276a3af3da3177b8aa4808de01bb983f2cc9dd6"
-  integrity sha512-AOJedGYOz6iryyzd2TTIhYrgd4p6enZHRpdsOh5D7UUnD0j0gpHgrmAzGEhG+Je6zFn9ZPx+GnuyTfUWGQGD6Q==
+"@henderea/simple-colors@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@henderea/simple-colors/-/simple-colors-1.1.3.tgz#e52e21b1f820b23f428459d030bc5e52360b7ad2"
+  integrity sha512-uBFI247c/Wv2Zi7yDcs9S0uCZa1vf+1t68j6W/xyr1jSE8liHH68HVPicU9SsTc3dBZdf50zn988AQY1T/omQg==
   dependencies:
-    lodash "^4.17.14"
+    lodash "^4.17.15"
     strip-ansi "^5.2.0"
 
 "@zeit/ncc@^0.20.4":
@@ -38,7 +38,7 @@ core-js@^2.6.5:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.9.tgz#6b4b214620c834152e179323727fc19741b084f2"
   integrity sha512-HOpZf6eXmnl7la+cUdMnLvUxKNqLUzJvgIziQ0DiF3JwSImNphIqdGqzj6hIKyX04MmV0poclQ7+wjWvxQyR2A==
 
-lodash@^4.17.14:
+lodash@^4.17.15:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
