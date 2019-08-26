@@ -25,7 +25,12 @@ const options = arg(
         '--test': Boolean,
         '-t': '--test',
         '--format': Boolean,
-        '-f': '--format'
+        '-f': '--format',
+        '--input': String,
+        '--query': '--input',
+        '-q': '--input',
+        '--whitespace-escapes': Boolean,
+        '-w': '--whitespace-escapes'
     },
     {
         permissive: true
@@ -46,10 +51,12 @@ const helpText = new HelpTextMaker('quick-regex')
     .dict
     .key.tab.flag('--match', '-m', '--pattern', '-p').value.text('The regex pattern to match').end.nl
     .key.tab.flag('--replace', '-r', '--sub', '-s').value.text('The substitution string').end.nl
+    .key.tab.flag('--input', '--query', '-q').value.text('Instead of using stdin, use this parameter value').end.nl
     .key.tab.flag('--test', '-t').value.text('Instead of replacing text, exit with code ').text(ex('0')).text(' for a match, or code ').text(ex('1')).text(' for no match').end.nl
     .key.tab.flag('--no-case', '-i').value.text('Make the regex pattern case-insensitive').end.nl
     .key.tab.flag('--one-line', '-o').value.text('Make the ').text(ex('^')).text(' and ').text(ex('$')).text(' match the beginning and end of the entire input').end.nl
     .key.tab.flag('--format', '-f').value.text('Convert ').text(ex('\\e')).text(' to the ANSI escape character before printing the output').end.nl
+    .key.tab.flag('--whitespace-escapes', '-w').value.text('Convert ').text(ex('\\n')).text(', ').text(ex('\\t')).text(', and ').text(ex('\\r')).text(' to the corresponding whitespace characters before printing the output').end.nl
     .key.tab.flag('--help', '-h').value.text('Print this help').end.nl
     .endDict
     .popWrap()
@@ -199,7 +206,7 @@ let processReplace = (args, replaceString, left = null, right = null) => {
 
 (async () => {
     let matchRegex = new RegExp(options['--match'], `g${options['--no-case'] ? 'i' : ''}${options['--one-line'] ? '' : 'm'}`);
-    let input = await readAll(process.stdin);
+    let input = options['--input'] || await readAll(process.stdin);
     if(options['--test']) {
         let matches = matchRegex.test(input);
         if(matches) {
@@ -214,6 +221,9 @@ let processReplace = (args, replaceString, left = null, right = null) => {
         let rv = input.replace(matchRegex, (...args) => processReplace(args, replaceString));
         if(options['--format']) {
             rv = rv.replace(/\\e/g, '\u001b');
+        }
+        if(options['--whitespace-escapes']) {
+            rv = rv.replace(/\\n/g, '\n').replace(/\\t/g, '\t').replace(/\\r/g, '\r');
         }
         process.stdout.write(rv);
     }
