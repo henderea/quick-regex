@@ -30,7 +30,11 @@ const options = arg(
         '--query': '--input',
         '-q': '--input',
         '--whitespace-escapes': Boolean,
-        '-w': '--whitespace-escapes'
+        '-w': '--whitespace-escapes',
+        '--grep': Boolean,
+        '-g': '--grep',
+        '--reverse-grep': Boolean,
+        '-G': '--reverse-grep'
     },
     {
         permissive: true
@@ -57,6 +61,8 @@ const helpText = new HelpTextMaker('quick-regex')
     .key.tab.flag('--one-line', '-o').value.text('Make the ').text(ex('^')).text(' and ').text(ex('$')).text(' match the beginning and end of the entire input').end.nl
     .key.tab.flag('--format', '-f').value.text('Convert ').text(ex('\\e')).text(' to the ANSI escape character before printing the output').end.nl
     .key.tab.flag('--whitespace-escapes', '-w').value.text('Convert ').text(ex('\\n')).text(', ').text(ex('\\t')).text(', and ').text(ex('\\r')).text(' to the corresponding whitespace characters before printing the output').end.nl
+    .key.tab.flag('--grep', '-g').value.text('Print lines matching the pattern').end.nl
+    .key.tab.flag('--reverse-grep', '-G').value.text('Print lines ').bold('not').text(' matching the pattern').end.nl
     .key.tab.flag('--help', '-h').value.text('Print this help').end.nl
     .endDict
     .popWrap()
@@ -124,6 +130,33 @@ const readAll = async (stream, encoding = 'utf8') => {
         });
     });
 };
+
+const readLines = async (stream, processLines, encoding = 'utf8') => {
+    return new Promise((resolve, reject) => {
+        stream.setEncoding(encoding);
+        let buffer = ''
+        let processBuffer = (end = false) => {
+            let lines = buffer.split(/\r?\n/);
+            if(end) {
+                buffer = '';
+            } else {
+                buffer = lines.pop();
+            }
+            processLines(lines, end);
+        }
+        stream.on('data', chunk => {
+            buffer += chunk;
+            processBuffer();
+        });
+        stream.on('end', () => {
+            processBuffer(true);
+            resolve();
+        });
+        stream.on('error', e => {
+            reject(e);
+        });
+    });
+}
 
 let replaceRegex = XRegExp(`\\$\\{(?<index>\\d+)(?<otherIndexes>(?:\\|\\d+)+)?(?:(?<question>\\?)(?<whenVal>[^:}]*)(?::(?<elseVal>[^:}]*))?|(?:(?<colon>:)(?:(?<hyphen>-)(?<fallback>[^{}]+)|(?<subStart>\\d+)(?::(?<subLen>\\d+))?)))?}`, 'g')
 
@@ -206,25 +239,44 @@ let processReplace = (args, replaceString, left = null, right = null) => {
 
 (async () => {
     let matchRegex = new RegExp(options['--match'], `g${options['--no-case'] ? 'i' : ''}${options['--one-line'] ? '' : 'm'}`);
-    let input = options['--input'] || await readAll(process.stdin);
-    if(options['--test']) {
-        let matches = matchRegex.test(input);
-        if(matches) {
-            console.log(green.bright('Match'));
-            process.exit(0);
-        } else {
-            console.log(red.bright('No Match'));
-            process.exit(1);
+    if(options['--grep'] || options['--reverse-grep']) {
+        let start = true;
+        let endedWithNewline = false;
+        let processLines = (lines, end) => {
+            let outputLines = lines.filter(line => (matchRegex.test(line) || matchRegex.test(line + '\n')) ? !options['--reverse-grep'] : options['--reverse-grep']).join('\n');
+            if(outputLines.length > 0) {
+                if(!start) { process.stdout.write('\n'); }
+                start = false;
+                process.stdout.write(outputLines);
+                endedWithNewline = /\n$/m.test(outputLines);
+            }
+            if(end && !endedWithNewline) {
+                process.stdout.write('\n');
+            }
         }
+        await readLines(process.stdin, processLines);
+        process.exit(0);
     } else {
-        let replaceString = options['--replace'];
-        let rv = input.replace(matchRegex, (...args) => processReplace(args, replaceString));
-        if(options['--format']) {
-            rv = rv.replace(/\\e/g, '\u001b');
+        let input = options['--input'] || await readAll(process.stdin);
+        if(options['--test']) {
+            let matches = matchRegex.test(input);
+            if(matches) {
+                console.log(green.bright('Match'));
+                process.exit(0);
+            } else {
+                console.log(red.bright('No Match'));
+                process.exit(1);
+            }
+        } else {
+            let replaceString = options['--replace'];
+            let rv = input.replace(matchRegex, (...args) => processReplace(args, replaceString));
+            if(options['--format']) {
+                rv = rv.replace(/\\e/g, '\u001b');
+            }
+            if(options['--whitespace-escapes']) {
+                rv = rv.replace(/\\n/g, '\n').replace(/\\t/g, '\t').replace(/\\r/g, '\r');
+            }
+            process.stdout.write(rv);
         }
-        if(options['--whitespace-escapes']) {
-            rv = rv.replace(/\\n/g, '\n').replace(/\\t/g, '\t').replace(/\\r/g, '\r');
-        }
-        process.stdout.write(rv);
     }
 })();
