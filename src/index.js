@@ -34,7 +34,9 @@ const options = arg(
         '--grep': Boolean,
         '-g': '--grep',
         '--reverse-grep': Boolean,
-        '-G': '--reverse-grep'
+        '-G': '--reverse-grep',
+        '--stream': Boolean,
+        '-S': '--stream'
     },
     {
         permissive: true
@@ -58,11 +60,12 @@ const helpText = new HelpTextMaker('quick-regex')
     .key.tab.flag('--input', '--query', '-q').value.text('Instead of using stdin, use this parameter value').end.nl
     .key.tab.flag('--test', '-t').value.text('Instead of replacing text, exit with code ').text(ex('0')).text(' for a match, or code ').text(ex('1')).text(' for no match').end.nl
     .key.tab.flag('--no-case', '-i').value.text('Make the regex pattern case-insensitive').end.nl
-    .key.tab.flag('--one-line', '-o').value.text('Make the ').text(ex('^')).text(' and ').text(ex('$')).text(' match the beginning and end of the entire input').end.nl
+    .key.tab.flag('--one-line', '-o').value.text('Make the ').text(ex('^')).text(' and ').text(ex('$')).text(' match the beginning and end of the entire input. The grep and reverse-grep modes process one line at a time, so this will not be respected there.').end.nl
     .key.tab.flag('--format', '-f').value.text('Convert ').text(ex('\\e')).text(' to the ANSI escape character before printing the output').end.nl
     .key.tab.flag('--whitespace-escapes', '-w').value.text('Convert ').text(ex('\\n')).text(', ').text(ex('\\t')).text(', and ').text(ex('\\r')).text(' to the corresponding whitespace characters before printing the output').end.nl
     .key.tab.flag('--grep', '-g').value.text('Print lines matching the pattern').end.nl
     .key.tab.flag('--reverse-grep', '-G').value.text('Print lines ').bold('not').text(' matching the pattern').end.nl
+    .key.tab.flag('--stream', '-S').value.text('Process input lines as they come in. Ignored if ').flag('--test').text(', ').flag('--one-line').text(', or ').flag('--input').text(' is used. Note that grep and reverse-grep modes automatically use stream mode.').end.nl
     .key.tab.flag('--help', '-h').value.text('Print this help').end.nl
     .endDict
     .popWrap()
@@ -136,8 +139,8 @@ const readLines = async (stream, processLines, encoding = 'utf8') => {
         stream.setEncoding(encoding);
         let buffer = ''
         let processBuffer = (end = false) => {
-            let lines = buffer.split(/\r?\n/);
-            if(end) {
+            let lines = buffer.split(/(?<=\r?\n)/);
+            if(end || lines.length <= 0 || /\n$/m.test(lines[lines.length - 1])) {
                 buffer = '';
             } else {
                 buffer = lines.pop();
@@ -240,24 +243,37 @@ let processReplace = (args, replaceString, left = null, right = null) => {
 (async () => {
     let matchRegex = new RegExp(options['--match'], `g${options['--no-case'] ? 'i' : ''}${options['--one-line'] ? '' : 'm'}`);
     if(options['--grep'] || options['--reverse-grep']) {
-        let start = true;
-        let endedWithNewline = false;
-        let processLines = (lines, end) => {
-            let outputLines = lines.filter(line => (matchRegex.test(line) || matchRegex.test(line + '\n')) ? !options['--reverse-grep'] : options['--reverse-grep']).join('\n');
+        let processLines = (lines) => {
+            let outputLines = lines.filter(line => (matchRegex.test(line) || matchRegex.test(line.replace(/\n$/m, ''))) ? !options['--reverse-grep'] : options['--reverse-grep']).join('');
             if(outputLines.length > 0) {
-                if(!start) { process.stdout.write('\n'); }
-                start = false;
                 process.stdout.write(outputLines);
-                endedWithNewline = /\n$/m.test(outputLines);
-            }
-            if(end && !endedWithNewline) {
-                process.stdout.write('\n');
             }
         }
         await readLines(process.stdin, processLines);
         process.exit(0);
     } else {
-        let input = options['--input'] || await readAll(process.stdin);
+        let replaceString = options['--replace'];
+        let input = options['--input'];
+        let processLines = (lines) => {
+            lines.forEach(input => {
+                let rv = input.replace(matchRegex, (...args) => processReplace(args, replaceString));
+                if(options['--format']) {
+                    rv = rv.replace(/\\e/g, '\u001b');
+                }
+                if(options['--whitespace-escapes']) {
+                    rv = rv.replace(/\\n/g, '\n').replace(/\\t/g, '\t').replace(/\\r/g, '\r');
+                }
+                process.stdout.write(rv);
+            });
+        }
+        if(!input) {
+            if(options['--one-line'] || options['--test'] || !options['--stream']) {
+                input = await readAll(process.stdin);
+            } else {
+                await readLines(process.stdin, processLines);
+                process.exit(0);
+            }
+        }
         if(options['--test']) {
             let matches = matchRegex.test(input);
             if(matches) {
@@ -268,15 +284,7 @@ let processReplace = (args, replaceString, left = null, right = null) => {
                 process.exit(1);
             }
         } else {
-            let replaceString = options['--replace'];
-            let rv = input.replace(matchRegex, (...args) => processReplace(args, replaceString));
-            if(options['--format']) {
-                rv = rv.replace(/\\e/g, '\u001b');
-            }
-            if(options['--whitespace-escapes']) {
-                rv = rv.replace(/\\n/g, '\n').replace(/\\t/g, '\t').replace(/\\r/g, '\r');
-            }
-            process.stdout.write(rv);
+            processLines([input]);
         }
     }
 })();
