@@ -6,42 +6,51 @@ require('xregexp/lib/addons/matchrecursive')(XRegExp);
 const { HelpTextMaker, styles } = require('@henderea/simple-colors/helpText');
 const { green, red, magenta } = styles;
 
-const options = arg(
-    {
-        '--match': String,
-        '-m': '--match',
-        '--pattern': '--match',
-        '-p': '--match',
-        '--replace': String,
-        '-r': '--replace',
-        '--sub': '--replace',
-        '-s': '--replace',
-        '--no-case': Boolean,
-        '-i': '--no-case',
-        '--one-line': Boolean,
-        '-o': '--one-line',
-        '--help': Boolean,
-        '-h': '--help',
-        '--test': Boolean,
-        '-t': '--test',
-        '--format': Boolean,
-        '-f': '--format',
-        '--input': String,
-        '--query': '--input',
-        '-q': '--input',
-        '--whitespace-escapes': Boolean,
-        '-w': '--whitespace-escapes',
-        '--grep': Boolean,
-        '-g': '--grep',
-        '--reverse-grep': Boolean,
-        '-G': '--reverse-grep',
-        '--stream': Boolean,
-        '-S': '--stream'
-    },
-    {
-        permissive: true
+const argParser = () => {
+    const parse = (argv = null) => {
+        let opts = argv === null ? { permissive: true } : { argv, permissive: true };
+        return arg(parse._args, opts);
     }
-);
+    parse._args = {};
+    parse.arg = (...names) => {
+        let type = names.pop();
+        let mainName = names.shift();
+        parse._args[mainName] = type;
+        if(names.length > 0) {
+            names.forEach(name => {
+                parse._args[name] = mainName;
+            });
+        }
+        return parse;
+    };
+    parse.string = (...names) => parse.arg(...names, String);
+    parse.bool = (...names) => parse.arg(...names, Boolean);
+    return parse;
+}
+const addArg = (obj, ...names) => {
+    let type = names.pop();
+    let mainName = names.shift();
+    obj[mainName] = type;
+    names.forEach(name => {
+
+    });
+}
+
+const parse = argParser()
+    .string('--match', '-m')
+    .string('--replace', '-r')
+    .string('--input', '--query', '-q')
+    .bool('--help', '-h')
+    .bool('--no-case', '-i')
+    .bool('--one-line', '-o')
+    .bool('--test', '-t')
+    .bool('--format', '-f')
+    .bool('--whitespace-escapes', '-w')
+    .bool('--grep', '-g')
+    .bool('--reverse-grep', '-G')
+    .bool('--stream', '-S');
+
+const options = parse();
 
 const ex = magenta.bright;
 
@@ -49,14 +58,14 @@ const helpText = new HelpTextMaker('quick-regex')
     .wrap()
     .title.nl
     .pushWrap(4)
-    .tab.text('A regex replace utility that takes stdin, applies the regex replacement, and prints the result. Using the ').flag('--test', '-t').text(' flag will switch the mode to a boolean match test.').nl
+    .tab.text('A regex replace utility that takes stdin, applies the regex replacement, and prints the result. Using the ').flag('--test', '-t').text(' flag will switch the mode to a boolean match test. Using the ').flag('--grep', '-g').text(' or ').flag('--reverse-grep', '-G').text(' flags will switch to grep or reverse grep mode.').nl
     .popWrap()
     .nl
     .flags.nl
     .pushWrap(8)
     .dict
-    .key.tab.flag('--match', '-m', '--pattern', '-p').value.text('The regex pattern to match').end.nl
-    .key.tab.flag('--replace', '-r', '--sub', '-s').value.text('The substitution string').end.nl
+    .key.tab.flag('--match', '-m').value.text('The regex pattern to match').end.nl
+    .key.tab.flag('--replace', '-r').value.text('The substitution string').end.nl
     .key.tab.flag('--input', '--query', '-q').value.text('Instead of using stdin, use this parameter value').end.nl
     .key.tab.flag('--test', '-t').value.text('Instead of replacing text, exit with code ').text(ex('0')).text(' for a match, or code ').text(ex('1')).text(' for no match').end.nl
     .key.tab.flag('--no-case', '-i').value.text('Make the regex pattern case-insensitive').end.nl
