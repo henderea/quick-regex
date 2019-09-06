@@ -1,56 +1,25 @@
 #!/usr/bin/env node
 
-const arg = require('arg');
+const { argParser } = require('../lib/argParser');
 const XRegExp = require('xregexp/lib/xregexp');
 require('xregexp/lib/addons/matchrecursive')(XRegExp);
 const { HelpTextMaker, styles } = require('@henderea/simple-colors/helpText');
 const { green, red, magenta } = styles;
 
-const argParser = () => {
-    const parse = (argv = null) => {
-        let opts = argv === null ? { permissive: true } : { argv, permissive: true };
-        return arg(parse._args, opts);
-    }
-    parse._args = {};
-    parse.arg = (...names) => {
-        let type = names.pop();
-        let mainName = names.shift();
-        parse._args[mainName] = type;
-        if(names.length > 0) {
-            names.forEach(name => {
-                parse._args[name] = mainName;
-            });
-        }
-        return parse;
-    };
-    parse.string = (...names) => parse.arg(...names, String);
-    parse.bool = (...names) => parse.arg(...names, Boolean);
-    return parse;
-}
-const addArg = (obj, ...names) => {
-    let type = names.pop();
-    let mainName = names.shift();
-    obj[mainName] = type;
-    names.forEach(name => {
-
-    });
-}
-
-const parse = argParser()
-    .string('--match', '-m')
-    .string('--replace', '-r')
-    .string('--input', '--query', '-q')
-    .bool('--help', '-h')
-    .bool('--no-case', '-i')
-    .bool('--one-line', '-o')
-    .bool('--test', '-t')
-    .bool('--format', '-f')
-    .bool('--whitespace-escapes', '-w')
-    .bool('--grep', '-g')
-    .bool('--reverse-grep', '-G')
-    .bool('--stream', '-S');
-
-const options = parse();
+const options = argParser()
+    .string('match', '--match', '-m')
+    .string('replace', '--replace', '-r')
+    .string('input', '--input', '--query', '-q')
+    .bool('help', '--help', '-h')
+    .bool('noCase', '--no-case', '-i')
+    .bool('oneLine', '--one-line', '-o')
+    .bool('test', '--test', '-t')
+    .bool('format', '--format', '-f')
+    .bool('whitespaceEscapes', '--whitespace-escapes', '-w')
+    .bool('grep', '--grep', '-g')
+    .bool('reverseGrep', '--reverse-grep', '-G')
+    .bool('stream', '--stream', '-S')
+    .argv;
 
 const ex = magenta.bright;
 
@@ -122,7 +91,7 @@ const helpText = new HelpTextMaker('quick-regex')
     .nl
     .toString(120);
 
-if(options['--help']) {
+if(options.help) {
     console.log(helpText);
     process.exit(0);
 }
@@ -250,10 +219,10 @@ let processReplace = (args, replaceString, left = null, right = null) => {
 }
 
 (async () => {
-    let matchRegex = new RegExp(options['--match'], `g${options['--no-case'] ? 'i' : ''}${options['--one-line'] ? '' : 'm'}`);
-    if(options['--grep'] || options['--reverse-grep']) {
+    let matchRegex = new RegExp(options.match, `g${options.noCase ? 'i' : ''}${options.oneLine ? '' : 'm'}`);
+    if(options.grep || options.reverseGrep) {
         let processLines = (lines) => {
-            let outputLines = lines.filter(line => (matchRegex.test(line) || matchRegex.test(line.replace(/\n$/m, ''))) ? !options['--reverse-grep'] : options['--reverse-grep']).join('');
+            let outputLines = lines.filter(line => (matchRegex.test(line) || matchRegex.test(line.replace(/\n$/m, ''))) ? !options.reverseGrep : options.reverseGrep).join('');
             if(outputLines.length > 0) {
                 process.stdout.write(outputLines);
             }
@@ -261,29 +230,29 @@ let processReplace = (args, replaceString, left = null, right = null) => {
         await readLines(process.stdin, processLines);
         process.exit(0);
     } else {
-        let replaceString = options['--replace'];
-        let input = options['--input'];
+        let replaceString = options.replace;
+        let input = options.input;
         let processLines = (lines) => {
             lines.forEach(input => {
                 let rv = input.replace(matchRegex, (...args) => processReplace(args, replaceString));
-                if(options['--format']) {
+                if(options.format) {
                     rv = rv.replace(/\\e/g, '\u001b');
                 }
-                if(options['--whitespace-escapes']) {
+                if(options.whitespaceEscapes) {
                     rv = rv.replace(/\\n/g, '\n').replace(/\\t/g, '\t').replace(/\\r/g, '\r');
                 }
                 process.stdout.write(rv);
             });
         }
         if(!input) {
-            if(options['--one-line'] || options['--test'] || !options['--stream']) {
+            if(options.oneLine || options.test || !options.stream) {
                 input = await readAll(process.stdin);
             } else {
                 await readLines(process.stdin, processLines);
                 process.exit(0);
             }
         }
-        if(options['--test']) {
+        if(options.test) {
             let matches = matchRegex.test(input);
             if(matches) {
                 console.log(green.bright('Match'));
