@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { argParser } = require('../lib/argParser');
+const { argParser } = require('@henderea/arg-helper')(require('arg'));
 const { processReplace } = require('../lib/matching');
 const { readAll, readLines } = require('../lib/readInput');
 const { helpText, styles } = require('../lib/helpText');
