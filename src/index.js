@@ -26,7 +26,7 @@ const options = argParser()
     let matchRegex = new RegExp(options.match, `g${options.noCase ? 'i' : ''}${options.oneLine ? '' : 'm'}`);
     if(options.grep || options.reverseGrep) {
         let processLines = (lines) => {
-            let outputLines = lines.filter(line => (matchRegex.test(line) || matchRegex.test(line.replace(/\n$/m, ''))) ? !options.reverseGrep : options.reverseGrep).join('');
+            let outputLines = lines.filter(line => (matchRegex.test(line) || matchRegex.test(line.replace(/\r?\n$/, ''))) ? !options.reverseGrep : options.reverseGrep).join('');
             if(outputLines.length > 0) {
                 process.stdout.write(outputLines);
             }
