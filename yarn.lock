@@ -10,10 +10,17 @@
     core-js "^2.6.5"
     regenerator-runtime "^0.13.2"
 
-"@henderea/arg-helper@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@henderea/arg-helper/-/arg-helper-1.0.0.tgz#ded840d1076ace2ffc6d55898a0cd8c9a1de04f5"
-  integrity sha512-GGXz4T0bA8xww6fbF5R7hm4L7tSqomi1hwEGvsmRec9HpLfdkq/Dn900g4j4xzrT4Ar7iKEPFssnGO0El07N3g==
+"@henderea/arg-helper@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@henderea/arg-helper/-/arg-helper-1.1.0.tgz#f2f0ef797da27432a837afa0394f6eea25388d70"
+  integrity sha512-/M7uY5146dbyhrfbwMgzVX7dCybBt+/IkCaQ75rr7Hxh47jSsUgfJuILSuE4NiwTXT9WISyg/tFvGjpfDPf/Pw==
+
+"@henderea/regex-util@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@henderea/regex-util/-/regex-util-1.0.3.tgz#2c023319a1d72ff1789bbdeeac21a2aeee8a0a5d"
+  integrity sha512-urDBeMSyhMxjCNrre7DKsD4Nz02nuoD+4wcNXr4mq8OpwU1GufAMXriHPYEi4nn/al/PawaCJjgIhAevwnBbyw==
+  dependencies:
+    xregexp "^4.2.4"
 
 "@henderea/simple-colors@^1.2.0":
   version "1.2.0"

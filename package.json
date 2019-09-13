@@ -8,11 +8,11 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
-    "@henderea/arg-helper": "^1.0.0",
+    "@henderea/arg-helper": "^1.1.0",
+    "@henderea/regex-util": "^1.0.3",
     "@henderea/simple-colors": "^1.2.0",
     "@zeit/ncc": "^0.20.5",
-    "arg": "^4.1.1",
-    "xregexp": "^4.2.4"
+    "arg": "^4.1.1"
   },
   "scripts": {
     "ncc:build": "yarn ncc:build:release",
