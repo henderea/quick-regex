@@ -28,7 +28,7 @@ const options = argParser()
     let matchRegex = null;
     if(options.match) {
         matchRegex = new RegExp(options.match, `g${options.noCase ? 'i' : ''}${options.oneLine ? '' : 'm'}`);
-        if(options.replace) {
+        if(options.replace || options.replace === '') {
             subs.push({ matchRegex, replaceString: options.replace });
         }
     }
