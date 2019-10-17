@@ -7,24 +7,25 @@ const { readAll, readLines } = require('../lib/readInput');
 const { helpText, styles } = require('../lib/helpText');
 const { red, green, bold } = styles;
 
+let options = null;
 try {
-const options = argParser()
-    .string('match', '--match', '-m')
-    .string('replace', '--replace', '-r')
-    .string('input', '--input', '--query', '-q')
-    .string('file', '--file', '--input-file', '-f')
-    .strings('subs', '--subs', '-s')
-    .bool('help', '--help', '-h')
-    .bool('noCase', '--no-case', '-i')
-    .bool('oneLine', '--one-line', '-o')
-    .bool('test', '--test', '-t')
-    .bool('format', '--format', '--ansi-format', '-a')
-    .bool('whitespaceEscapes', '--whitespace-escapes', '-w')
-    .bool('grep', '--grep', '-g')
-    .bool('reverseGrep', '--reverse-grep', '-G')
-    .bool('stream', '--stream', '-S')
-    .help(helpText, '--help', '-h')
-    .argv;
+    options = argParser()
+        .string('match', '--match', '-m')
+        .string('replace', '--replace', '-r')
+        .string('input', '--input', '--query', '-q')
+        .string('file', '--file', '--input-file', '-f')
+        .strings('subs', '--subs', '-s')
+        .bool('help', '--help', '-h')
+        .bool('noCase', '--no-case', '-i')
+        .bool('oneLine', '--one-line', '-o')
+        .bool('test', '--test', '-t')
+        .bool('format', '--format', '--ansi-format', '-a')
+        .bool('whitespaceEscapes', '--whitespace-escapes', '-w')
+        .bool('grep', '--grep', '-g')
+        .bool('reverseGrep', '--reverse-grep', '-G')
+        .bool('stream', '--stream', '-S')
+        .help(helpText, '--help', '-h')
+        .argv;
 } catch(e) {
     console.error(red.bright(`${bold('Error in arguments:')} ${e.message}`));
     if(/^.*?Option requires argument: -f\b.*$/.test(e.message)) {
