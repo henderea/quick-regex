@@ -1,27 +1,37 @@
 #!/usr/bin/env node
 
+const fs = require('fs');
 const { argParser } = require('@henderea/arg-helper')(require('arg'));
 const { doMultiReplace } = require('@henderea/regex-util');
 const { readAll, readLines } = require('../lib/readInput');
 const { helpText, styles } = require('../lib/helpText');
-const { red, green } = styles;
+const { red, green, bold } = styles;
 
+try {
 const options = argParser()
     .string('match', '--match', '-m')
     .string('replace', '--replace', '-r')
     .string('input', '--input', '--query', '-q')
+    .string('file', '--file', '--input-file', '-f')
     .strings('subs', '--subs', '-s')
     .bool('help', '--help', '-h')
     .bool('noCase', '--no-case', '-i')
     .bool('oneLine', '--one-line', '-o')
     .bool('test', '--test', '-t')
-    .bool('format', '--format', '-f')
+    .bool('format', '--format', '--ansi-format', '-a')
     .bool('whitespaceEscapes', '--whitespace-escapes', '-w')
     .bool('grep', '--grep', '-g')
     .bool('reverseGrep', '--reverse-grep', '-G')
     .bool('stream', '--stream', '-S')
     .help(helpText, '--help', '-h')
     .argv;
+} catch(e) {
+    console.error(red.bright(`${bold('Error in arguments:')} ${e.message}`));
+    if(/^.*?Option requires argument: -f\b.*$/.test(e.message)) {
+        console.error(`${bold('NOTE:')} As of version 2.7.0, '-f' is now an alias for '--file'. The new alias for '--format' is '-a'.`)
+    }
+    process.exit(1);
+}
 
 (async () => {
     let subs = [];
@@ -40,8 +50,20 @@ const options = argParser()
             subs.push({ matchRegex: match, replaceString: replace });
         });
     }
+    let inputStream = process.stdin;
+    let usingFileStream = false;
+    if(options.file && fs.existsSync(options.file)) {
+        usingFileStream = true;
+        inputStream = fs.createReadStream(options.file)
+    }
+    const cleanup = () => {
+        if(usingFileStream) {
+            inputStream.destroy();
+        }
+    }
     if(options.grep || options.reverseGrep) {
         if(!matchRegex) {
+            cleanup();
             console.error(`You must provide -m or --match in ${options.reverseGrep ? 'reverse-' : ''}grep mode.`)
             process.exit(1);
             return;
@@ -52,7 +74,8 @@ const options = argParser()
                 process.stdout.write(outputLines);
             }
         }
-        await readLines(process.stdin, processLines);
+        await readLines(inputStream, processLines);
+        cleanup();
         process.exit(0);
     } else {
         let input = options.input;
@@ -70,14 +93,16 @@ const options = argParser()
         }
         if(!input) {
             if(options.oneLine || options.test || !options.stream) {
-                input = await readAll(process.stdin);
+                input = await readAll(inputStream);
+                cleanup();
             } else {
                 if(subs.length == 0) {
                     console.error('You must provide -m/--match and -r/--replace, or -s/--subs, in the default replace mode.')
                     process.exit(1);
                     return;
                 }
-                await readLines(process.stdin, processLines);
+                await readLines(inputStream, processLines);
+                cleanup();
                 process.exit(0);
             }
         }
