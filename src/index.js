@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
+const stream = require('stream');
 const { argParser } = require('@henderea/arg-helper')(require('arg'));
 const { doMultiReplace } = require('@henderea/regex-util');
 const { readAll, readLines } = require('../lib/readInput');
@@ -13,7 +14,8 @@ try {
         .string('match', '--match', '-m')
         .string('replace', '--replace', '-r')
         .string('input', '--input', '--query', '-q')
-        .string('file', '--file', '--input-file', '-f')
+        .string('inputFile', '--input-file', '--file', '-f')
+        .string('outputFile', '--output-file', '--out', '--dest', '-d')
         .strings('subs', '--subs', '-s')
         .bool('help', '--help', '-h')
         .bool('noCase', '--no-case', '-i')
@@ -52,14 +54,43 @@ try {
         });
     }
     let inputStream = process.stdin;
-    let usingFileStream = false;
-    if(options.file && fs.existsSync(options.file)) {
-        usingFileStream = true;
-        inputStream = fs.createReadStream(options.file)
+    let usingInputFileStream = false;
+    if(options.inputFile && fs.existsSync(options.inputFile)) {
+        usingInputFileStream = true;
+        inputStream = fs.createReadStream(options.inputFile)
+    }
+    let outputStream = process.stdout;
+    let bufferStream = new stream.PassThrough();
+    let output = '';
+    let usingOutputFileStream = false;
+    let usingOutputBuffer = false;
+    if(options.outputFile) {
+        usingOutputFileStream = true;
+        if(options.outputFile == options.inputFile) {
+            usingOutputBuffer = true;
+            bufferStream.on('data', (chunk) => {
+                output += chunk;
+            });
+        } else {
+            outputStream = fs.createWriteStream(options.outputFile);
+            bufferStream.pipe(outputStream);
+        }
+    } else {
+        bufferStream.pipe(outputStream);
     }
     const cleanup = () => {
-        if(usingFileStream) {
+        if(usingInputFileStream) {
             inputStream.destroy();
+        }
+        bufferStream.destroy();
+        if(usingOutputFileStream) {
+            if(usingOutputBuffer) {
+                if(output.length > 0) {
+                    fs.writeFileSync(options.outputFile, output);
+                }
+            } else {
+                outputStream.destroy();
+            }
         }
     }
     if(options.grep || options.reverseGrep) {
@@ -72,7 +103,7 @@ try {
         let processLines = (lines) => {
             let outputLines = lines.filter(line => (matchRegex.test(line) || matchRegex.test(line.replace(/\r?\n$/, ''))) ? !options.reverseGrep : options.reverseGrep).join('');
             if(outputLines.length > 0) {
-                process.stdout.write(outputLines);
+                bufferStream.write(outputLines);
             }
         }
         await readLines(inputStream, processLines);
@@ -89,13 +120,12 @@ try {
                 if(options.whitespaceEscapes) {
                     rv = rv.replace(/\\n/g, '\n').replace(/\\t/g, '\t').replace(/\\r/g, '\r');
                 }
-                process.stdout.write(rv);
+                bufferStream.write(rv);
             });
         }
         if(!input) {
             if(options.oneLine || options.test || !options.stream) {
                 input = await readAll(inputStream);
-                cleanup();
             } else {
                 if(subs.length == 0) {
                     console.error('You must provide -m/--match and -r/--replace, or -s/--subs, in the default replace mode.')
@@ -108,6 +138,7 @@ try {
             }
         }
         if(options.test) {
+            cleanup();
             if(!matchRegex) {
                 console.error('You must provide -m or --match in test mode.')
                 process.exit(1);
@@ -123,11 +154,14 @@ try {
             }
         } else {
             if(subs.length == 0) {
+                cleanup();
                 console.error('You must provide -m/--match and -r/--replace, or -s/--subs, in the default replace mode.')
                 process.exit(1);
                 return;
             }
             processLines([input]);
+            cleanup();
+            process.exit(0);
         }
     }
 })();
