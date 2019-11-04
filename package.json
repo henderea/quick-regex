@@ -7,19 +7,24 @@
   "author": "Eric Henderson <henderea@gmail.com>",
   "license": "MIT",
   "private": false,
+  "dependencies": {
+    "detect-character-encoding": "^0.8.0"
+  },
   "devDependencies": {
     "@henderea/arg-helper": "^1.1.0",
     "@henderea/regex-util": "^1.0.3",
     "@henderea/simple-colors": "^1.2.0",
     "@zeit/ncc": "^0.20.5",
-    "arg": "^4.1.1"
+    "arg": "^4.1.1",
+    "concat-stream": "^2.0.0",
+    "iconv-lite": "^0.5.0"
   },
   "scripts": {
     "ncc:build": "yarn ncc:build:release",
     "ncc:clean": "rm -rf dist",
     "ncc:post-clean": "rm -rf dist/*.hbs && rm -rf dist/locales",
-    "ncc:build:release:build": "ncc build src/index.js -m -q -o dist",
-    "ncc:build:debug:build": "ncc build src/index.js -q -o dist",
+    "ncc:build:release:build": "ncc build src/index.js -m -q -o dist -e detect-character-encoding",
+    "ncc:build:debug:build": "ncc build src/index.js -q -o dist -e detect-character-encoding",
     "ncc:build:release": "yarn ncc:clean && yarn ncc:build:release:build && yarn ncc:post-clean",
     "ncc:build:debug": "yarn ncc:clean && yarn ncc:build:debug:build && yarn ncc:post-clean",
     "prepublishOnly": "yarn ncc:build"
