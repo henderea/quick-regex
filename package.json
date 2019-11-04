@@ -1,6 +1,6 @@
 {
   "name": "@henderea/quick-regex",
-  "version": "2.8.0",
+  "version": "2.8.1",
   "description": "An improved version of sed substitute mode",
   "main": "index.js",
   "repository": "git@github.com:henderea/quick-regex.git",
