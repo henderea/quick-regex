@@ -3,9 +3,9 @@
 
 
 "@babel/runtime-corejs2@^7.2.0":
-  version "7.7.6"
-  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs2/-/runtime-corejs2-7.7.6.tgz#50b7cd4eab929b4cb66167c4972d35eaceaa124b"
-  integrity sha512-QYp/8xdH8iMin3pH5gtT/rUuttVfIcOhWBC3wh9Eh/qs4jEe39+3DpCDLgWXhMQgiCTOH8mrLSvQ0OHOCcox9g==
+  version "7.7.7"
+  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs2/-/runtime-corejs2-7.7.7.tgz#44885957b275a5fd70413142eda9cff4662847ac"
+  integrity sha512-P91T3dFYQL7aj44PxOMIAbo66Ag3NbmXG9fseSYaXxapp3K9XTct5HU9IpTOm2D0AoktKusgqzN5YcSxZXEKBQ==
   dependencies:
     core-js "^2.6.5"
     regenerator-runtime "^0.13.2"
@@ -31,10 +31,10 @@
     strip-ansi "^6.0.0"
     supports-color "^7.1.0"
 
-"@zeit/ncc@^0.20.5":
-  version "0.20.5"
-  resolved "https://registry.yarnpkg.com/@zeit/ncc/-/ncc-0.20.5.tgz#a41af6e6bcab4a58f4612bae6137f70bce0192e3"
-  integrity sha512-XU6uzwvv95DqxciQx+aOLhbyBx/13ky+RK1y88Age9Du3BlA4mMPCy13BGjayOrrumOzlq1XV3SD/BWiZENXlw==
+"@zeit/ncc@^0.21.0":
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/@zeit/ncc/-/ncc-0.21.0.tgz#9516fc44ca81614c5b582d6e88542fdf37c401b6"
+  integrity sha512-RUMdvVK/w78oo+yBjruZltt0kJXYar2un/1bYQ2LuHG7GmFVm+QjxzEmySwREctaJdEnBvlMdUNWd9hXHxEI3g==
 
 ansi-regex@^5.0.0:
   version "5.0.0"
