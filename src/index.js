@@ -47,10 +47,21 @@ try {
     }
     if(options.subs && Array.isArray(options.subs)) {
         options.subs.forEach(sub => {
-            let parts = sub.split(/[|]{3}/, 2);
-            let match = new RegExp(parts[0], `g${options.noCase ? 'i' : ''}${options.oneLine ? '' : 'm'}`);
-            let replace = parts[1];
-            subs.push({ matchRegex: match, replaceString: replace });
+            if(/[|]{3}/.test(sub)) {
+                let parts = sub.split(/[|]{3}/, 2);
+                let match = new RegExp(parts[0], `g${options.noCase ? 'i' : ''}${options.oneLine ? '' : 'm'}`);
+                let replace = parts[1];
+                subs.push({ matchRegex: match, replaceString: replace });
+            } else {
+                let not = /^!/.test(sub);
+                if(not) {
+                    sub = sub.slice(1);
+                } else {
+                    sub = sub.replace(/^\\(\\*)!/, '$1!');
+                }
+                let match = new RegExp(sub, `g${options.noCase ? 'i' : ''}${options.oneLine ? '' : 'm'}`);
+                subs.push({ matchRegex: match, invertGrep: not });
+            }
         });
     }
     let inputStream = process.stdin;
@@ -114,13 +125,15 @@ try {
         let processLines = (lines) => {
             lines.forEach(input => {
                 let rv = doMultiReplace(input, subs);
-                if(options.format) {
-                    rv = rv.replace(/\\e/g, '\u001b');
+                if(rv !== null) {
+                    if(options.format) {
+                        rv = rv.replace(/\\e/g, '\u001b');
+                    }
+                    if(options.whitespaceEscapes) {
+                        rv = rv.replace(/\\n/g, '\n').replace(/\\t/g, '\t').replace(/\\r/g, '\r');
+                    }
+                    bufferStream.write(rv);
                 }
-                if(options.whitespaceEscapes) {
-                    rv = rv.replace(/\\n/g, '\n').replace(/\\t/g, '\t').replace(/\\r/g, '\r');
-                }
-                bufferStream.write(rv);
             });
         }
         if(!input) {
