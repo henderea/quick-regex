@@ -7,9 +7,7 @@
   "author": "Eric Henderson <henderea@gmail.com>",
   "license": "MIT",
   "private": false,
-  "dependencies": {
-    "detect-character-encoding": "^0.8.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@henderea/arg-helper": "^1.1.0",
     "@henderea/regex-util": "^1.1.1",
@@ -17,7 +15,8 @@
     "@zeit/ncc": "^0.21.0",
     "arg": "^4.1.2",
     "concat-stream": "^2.0.0",
-    "iconv-lite": "^0.5.1"
+    "iconv-lite": "^0.5.1",
+    "jschardet": "^2.1.1"
   },
   "scripts": {
     "ncc:build": "yarn ncc:build:release",
