@@ -10,7 +10,7 @@
   "dependencies": {},
   "devDependencies": {
     "@henderea/arg-helper": "^1.1.0",
-    "@henderea/regex-util": "^1.1.2",
+    "@henderea/regex-util": "^1.1.3",
     "@henderea/simple-colors": "^1.3.2",
     "@zeit/ncc": "^0.21.1",
     "arg": "^4.1.3",
