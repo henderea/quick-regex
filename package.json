@@ -10,13 +10,13 @@
   "dependencies": {},
   "devDependencies": {
     "@henderea/arg-helper": "^1.1.0",
-    "@henderea/regex-util": "^1.1.3",
+    "@henderea/regex-util": "^1.2.0",
     "@henderea/simple-colors": "^1.3.2",
     "@zeit/ncc": "^0.22.3",
     "arg": "^4.1.3",
     "concat-stream": "^2.0.0",
-    "iconv-lite": "^0.5.1",
-    "jschardet": "^2.1.1"
+    "iconv-lite": "^0.6.2",
+    "jschardet": "^2.2.1"
   },
   "scripts": {
     "ncc:build": "yarn ncc:build:release",
