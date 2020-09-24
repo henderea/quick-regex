@@ -22,14 +22,14 @@
   dependencies:
     xregexp "^4.3.0"
 
-"@henderea/simple-colors@^1.3.2":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@henderea/simple-colors/-/simple-colors-1.3.2.tgz#fb1faf1bdf44827f03756f0dcf9145d4e4be913f"
-  integrity sha512-oe0ciCcVcPs8t3E2QvYTFJB3B+7MWokvxh6woVLLjKUe/XebSMFWcf7bxrexRxsIIn/bcosHE3/ol4ak+6IUOQ==
+"@henderea/simple-colors@^1.3.3":
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@henderea/simple-colors/-/simple-colors-1.3.3.tgz#92f278b1f8d3a82bf4386ff8d0276a33a030d37d"
+  integrity sha512-oaM8Uhidu2jrujozWNiPe+UPItnnY/mtrBaVGLSQ6mHFjZby1hpyx3ohSInrJ3NUX/l+tz4n/9VC7L4p3aCq5g==
   dependencies:
-    lodash "^4.17.15"
+    lodash "^4.17.20"
     strip-ansi "^6.0.0"
-    supports-color "^7.1.0"
+    supports-color "^7.2.0"
 
 "@vercel/ncc@^0.24.1":
   version "0.24.1"
@@ -88,7 +88,7 @@ jschardet@^2.2.1:
   resolved "https://registry.yarnpkg.com/jschardet/-/jschardet-2.2.1.tgz#03b0264669a90c7a5c436a68c5a7d4e4cb0c9823"
   integrity sha512-Ks2JNuUJoc7PGaZ7bVFtSEvOcr0rBq6Q1J5/7+zKWLT+g+4zziL63O0jg7y2jxhzIa1LVsHUbPXrbaWmz9iwDw==
 
-lodash@^4.17.15:
+lodash@^4.17.20:
   version "4.17.20"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
@@ -131,7 +131,7 @@ strip-ansi@^6.0.0:
   dependencies:
     ansi-regex "^5.0.0"
 
-supports-color@^7.1.0:
+supports-color@^7.2.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-7.2.0.tgz#1b7dcdcb32b8138801b3e478ba6a51caa89648da"
   integrity sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
