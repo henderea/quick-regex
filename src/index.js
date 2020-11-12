@@ -21,6 +21,7 @@ try {
         .bool('noCase', '--no-case', '-i')
         .bool('oneLine', '--one-line', '-o')
         .bool('test', '--test', '-t')
+        .bool('silent', '--silent', '-!')
         .bool('format', '--format', '--ansi-format', '-a')
         .bool('whitespaceEscapes', '--whitespace-escapes', '-w')
         .bool('grep', '--grep', '-g')
@@ -159,10 +160,10 @@ try {
             }
             let matches = matchRegex.test(input);
             if(matches) {
-                console.log(green.bright('Match'));
+                if(!options.silent) { console.log(green.bright('Match')); }
                 process.exit(0);
             } else {
-                console.log(red.bright('No Match'));
+                if(!options.silent) { console.log(red.bright('No Match')); }
                 process.exit(1);
             }
         } else {
