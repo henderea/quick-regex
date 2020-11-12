@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
+const path = require('path');
 const stream = require('stream');
 const { argParser } = require('@henderea/arg-helper')(require('arg'));
 const { doMultiReplace } = require('@henderea/regex-util');
@@ -28,6 +29,7 @@ try {
         .bool('reverseGrep', '--reverse-grep', '-G')
         .bool('stream', '--stream', '-S')
         .help(helpText, '--help', '-h')
+        .version(path.join(eval('__dirname'), '../package.json'), '--version')
         .argv;
 } catch(e) {
     console.error(red.bright(`${bold('Error in arguments:')} ${e.message}`));
