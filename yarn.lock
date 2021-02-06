@@ -3,48 +3,48 @@
 
 
 "@babel/runtime-corejs3@^7.12.1":
-  version "7.12.5"
-  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.12.5.tgz#ffee91da0eb4c6dae080774e94ba606368e414f4"
-  integrity sha512-roGr54CsTmNPPzZoCP1AmDXuBoNao7tnSA83TXTwt+UK5QVyh1DIJnrgYRPWKCF2flqZQXwa7Yr8v7VmLzF0YQ==
+  version "7.12.13"
+  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.12.13.tgz#53d09813b7c20d616caf258e9325550ff701c039"
+  integrity sha512-8fSpqYRETHATtNitsCXq8QQbKJP31/KnDl2Wz2Vtui9nKzjss2ysuZtyVsWjBtvkeEFo346gkwjYPab1hvrXkQ==
   dependencies:
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
-"@henderea/arg-helper@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@henderea/arg-helper/-/arg-helper-1.2.0.tgz#add9c37f33f48819850783e4e74b893e449ce53e"
-  integrity sha512-/fEUpXScoNhTZwk3U19zwT7bGDCqr/wPAMjLW3GepEReQTsV+xrW/SGw4tOQqnnfStb5pFEqRydU59eW9FjPgg==
-
-"@henderea/regex-util@^1.2.1":
+"@henderea/arg-helper@^1.2.1":
   version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@henderea/regex-util/-/regex-util-1.2.1.tgz#7b13775e2b4c98fce3829ee6ea63f62269a7f428"
-  integrity sha512-xgmzpYAkiCW1uNd4PwDsszpXg3P4Cil3HOEbhOUv+qZ/BZl2IkACItkZC7NeXqe96CpqCgZw/Lu+MgL0oMbAXQ==
-  dependencies:
-    xregexp "^4.4.0"
+  resolved "https://registry.yarnpkg.com/@henderea/arg-helper/-/arg-helper-1.2.1.tgz#c04f96f1153b6dc0d44e0d564a076c873186c7bb"
+  integrity sha512-odhIeuhG/91i96i9zyh4+7ev4Cc9W0xH2JHUt7hdaiJ7Z/EnDAWM9uUTmNWIEepuFn5PzhVIeL1wqAJPMp5EUA==
 
-"@henderea/simple-colors@^1.3.3":
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/@henderea/simple-colors/-/simple-colors-1.3.3.tgz#92f278b1f8d3a82bf4386ff8d0276a33a030d37d"
-  integrity sha512-oaM8Uhidu2jrujozWNiPe+UPItnnY/mtrBaVGLSQ6mHFjZby1hpyx3ohSInrJ3NUX/l+tz4n/9VC7L4p3aCq5g==
+"@henderea/regex-util@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@henderea/regex-util/-/regex-util-1.2.2.tgz#f841717e37aebad3cbdca21c402aca828cf5acc1"
+  integrity sha512-uU2ZIdBpEtd2GoWEjM7O3Ph1ehwZ4zAXINVwRMd5B/DeiPufxQptyIFez2Grx4ZiTEUdrKil1Dw5kzdbhzAKVw==
+  dependencies:
+    xregexp "^4.4.1"
+
+"@henderea/simple-colors@^1.3.4":
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/@henderea/simple-colors/-/simple-colors-1.3.4.tgz#a135d34f299e2472b7531c33a93f16af61d5c809"
+  integrity sha512-i0fY26W81T85S9gm/ZLf/gFpUbqUD2miXa+8cDAmDtKxczAOknwXB6FJNaQorr4Ma8u8UDoASvY6FPIpLA3cRQ==
   dependencies:
     lodash "^4.17.20"
     strip-ansi "^6.0.0"
-    supports-color "^7.2.0"
+    supports-color "^8.1.1"
 
-"@vercel/ncc@^0.25.1":
-  version "0.25.1"
-  resolved "https://registry.yarnpkg.com/@vercel/ncc/-/ncc-0.25.1.tgz#a4aacdb508ac496fc0c63a3c3203d700a619cc0e"
-  integrity sha512-dGecC5+1wLof1MQpey4+6i2KZv4Sfs6WfXkl9KfO32GED4ZPiKxRfvtGPjbjZv0IbqMl6CxtcV1RotXYfd5SSA==
+"@vercel/ncc@^0.27.0":
+  version "0.27.0"
+  resolved "https://registry.yarnpkg.com/@vercel/ncc/-/ncc-0.27.0.tgz#c0cfeebb0bebb56052719efa4a0ecc090a932c76"
+  integrity sha512-DllIJQapnU2YwewIhh/4dYesmMQw3h2cFtabECc/zSJHqUbNa0eJuEkRa6DXbZvh1YPWBtYQoPV17NlDpBw1Vw==
 
 ansi-regex@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-5.0.0.tgz#388539f55179bf39339c81af30a654d69f87cb75"
   integrity sha512-bY6fj56OUQ0hU1KjFNDQuJFezqKdrAyFdIevADiqrWHwSlbmBNMHp5ak2f40Pm8JTFyM2mqxkG6ngkHO11f/lg==
 
-arg@^4.1.3:
-  version "4.1.3"
-  resolved "https://registry.yarnpkg.com/arg/-/arg-4.1.3.tgz#269fc7ad5b8e42cb63c896d5666017261c144089"
-  integrity sha512-58S9QDqG0Xx27YwPSt9fJxivjYl432YCwfDMfZ+71RAqUrZef7LrKQZ3LHLOwCS4FLNBplP533Zx895SeOCHvA==
+arg@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/arg/-/arg-5.0.0.tgz#a20e2bb5710e82950a516b3f933fee5ed478be90"
+  integrity sha512-4P8Zm2H+BRS+c/xX1LrHw0qKpEhdlZjLCgWy+d78T9vqa2Z2SiD2wMrYuWIAFy5IZUD7nnNXroRttz+0RzlrzQ==
 
 buffer-from@^1.0.0:
   version "1.1.1"
@@ -62,9 +62,9 @@ concat-stream@^2.0.0:
     typedarray "^0.0.6"
 
 core-js-pure@^3.0.0:
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.7.0.tgz#28a57c861d5698e053f0ff36905f7a3301b4191e"
-  integrity sha512-EZD2ckZysv8MMt4J6HSvS9K2GdtlZtdBncKAmF9lr2n0c9dJUaUN88PSTjvgwCgQPWKTkERXITgS6JJRAnljtg==
+  version "3.8.3"
+  resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.8.3.tgz#10e9e3b2592ecaede4283e8f3ad7020811587c02"
+  integrity sha512-V5qQZVAr9K0xu7jXg1M7qTEwuxUgqr7dUOezGaNa7i+Xn9oXAU/d1fzqD9ObuwpVQOaorO5s70ckyi1woP9lVA==
 
 has-flag@^4.0.0:
   version "4.0.0"
@@ -131,10 +131,10 @@ strip-ansi@^6.0.0:
   dependencies:
     ansi-regex "^5.0.0"
 
-supports-color@^7.2.0:
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-7.2.0.tgz#1b7dcdcb32b8138801b3e478ba6a51caa89648da"
-  integrity sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
+supports-color@^8.1.1:
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-8.1.1.tgz#cd6fc17e28500cff56c1b86c0a7fd4a54a73005c"
+  integrity sha512-MpUEN2OodtUzxvKQl72cUF7RQ5EiHsGvSsVG0ia9c5RbWGL2CI4C7EpPS8UTBIplnlzZiNuV56w+FuNxy3ty2Q==
   dependencies:
     has-flag "^4.0.0"
 
@@ -148,9 +148,9 @@ util-deprecate@^1.0.1:
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=
 
-xregexp@^4.4.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/xregexp/-/xregexp-4.4.0.tgz#29660f5d6567cd2ef981dd4a50cb05d22c10719d"
-  integrity sha512-83y4aa8o8o4NZe+L+46wpa+F1cWR/wCGOWI3tzqUso0w3/KAvXy0+Di7Oe/cbNMixDR4Jmi7NEybWU6ps25Wkg==
+xregexp@^4.4.1:
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/xregexp/-/xregexp-4.4.1.tgz#c84a88fa79e9ab18ca543959712094492185fe65"
+  integrity sha512-2u9HwfadaJaY9zHtRRnH6BY6CQVNQKkYm3oLtC9gJXXzfsbACg5X5e4EZZGVAH+YIfa+QA9lsFQTTe3HURF3ag==
   dependencies:
     "@babel/runtime-corejs3" "^7.12.1"
