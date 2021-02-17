@@ -15,10 +15,10 @@
   resolved "https://registry.yarnpkg.com/@henderea/arg-helper/-/arg-helper-1.2.1.tgz#c04f96f1153b6dc0d44e0d564a076c873186c7bb"
   integrity sha512-odhIeuhG/91i96i9zyh4+7ev4Cc9W0xH2JHUt7hdaiJ7Z/EnDAWM9uUTmNWIEepuFn5PzhVIeL1wqAJPMp5EUA==
 
-"@henderea/regex-util@^1.2.3":
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/@henderea/regex-util/-/regex-util-1.2.3.tgz#13ce355efbf4e2d1db60eb73e32ab0db04b0302d"
-  integrity sha512-o0D+JjGUorKwWbDOD3wy4ETrZ3flgJ3UTndSVZH9c/M8wa7+eMzInHUyIAi3sCeEY8iI+7IowR77jror/I6OTA==
+"@henderea/regex-util@^1.2.4":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@henderea/regex-util/-/regex-util-1.2.4.tgz#f5c86f148494168fd9bed5e21aa2bfbfbe9d4236"
+  integrity sha512-F0wNE2NO8acbsshrdYRpwNVSfbPmAQSTM/ldI5Hcw2uTb8sDEIYa5lle/eJ35T42RIEAfd6/FOMhpDITXIhGaQ==
   dependencies:
     xregexp "^5.0.1"
 
