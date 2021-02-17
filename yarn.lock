@@ -15,17 +15,17 @@
   resolved "https://registry.yarnpkg.com/@henderea/arg-helper/-/arg-helper-1.2.1.tgz#c04f96f1153b6dc0d44e0d564a076c873186c7bb"
   integrity sha512-odhIeuhG/91i96i9zyh4+7ev4Cc9W0xH2JHUt7hdaiJ7Z/EnDAWM9uUTmNWIEepuFn5PzhVIeL1wqAJPMp5EUA==
 
-"@henderea/regex-util@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@henderea/regex-util/-/regex-util-1.2.2.tgz#f841717e37aebad3cbdca21c402aca828cf5acc1"
-  integrity sha512-uU2ZIdBpEtd2GoWEjM7O3Ph1ehwZ4zAXINVwRMd5B/DeiPufxQptyIFez2Grx4ZiTEUdrKil1Dw5kzdbhzAKVw==
+"@henderea/regex-util@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@henderea/regex-util/-/regex-util-1.2.3.tgz#13ce355efbf4e2d1db60eb73e32ab0db04b0302d"
+  integrity sha512-o0D+JjGUorKwWbDOD3wy4ETrZ3flgJ3UTndSVZH9c/M8wa7+eMzInHUyIAi3sCeEY8iI+7IowR77jror/I6OTA==
   dependencies:
-    xregexp "^4.4.1"
+    xregexp "^5.0.1"
 
-"@henderea/simple-colors@^1.3.4":
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/@henderea/simple-colors/-/simple-colors-1.3.4.tgz#a135d34f299e2472b7531c33a93f16af61d5c809"
-  integrity sha512-i0fY26W81T85S9gm/ZLf/gFpUbqUD2miXa+8cDAmDtKxczAOknwXB6FJNaQorr4Ma8u8UDoASvY6FPIpLA3cRQ==
+"@henderea/simple-colors@^1.3.7":
+  version "1.3.7"
+  resolved "https://registry.yarnpkg.com/@henderea/simple-colors/-/simple-colors-1.3.7.tgz#418036559885b7df37b45b8fca91c274a7d0fe3a"
+  integrity sha512-yBY+RduoN7Wwu4/fexsjbVusrrx6IGdJLN8a4FQnM9MSOoJAPINdujZ//GjvFPytTvgwwiz4srYgDgPzyG74MQ==
   dependencies:
     lodash "^4.17.20"
     strip-ansi "^6.0.0"
@@ -148,9 +148,9 @@ util-deprecate@^1.0.1:
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=
 
-xregexp@^4.4.1:
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/xregexp/-/xregexp-4.4.1.tgz#c84a88fa79e9ab18ca543959712094492185fe65"
-  integrity sha512-2u9HwfadaJaY9zHtRRnH6BY6CQVNQKkYm3oLtC9gJXXzfsbACg5X5e4EZZGVAH+YIfa+QA9lsFQTTe3HURF3ag==
+xregexp@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/xregexp/-/xregexp-5.0.1.tgz#b2f20e87790876585fb4103e91cb163a63cd2547"
+  integrity sha512-flG0ykxHQLOfF886GpnY26WQkj4/RmcxYvoVcSFbg+1lPMdnXEPoTKuLzw1olKnJ+o2Wc1+RCD1oktV4bYzVlQ==
   dependencies:
     "@babel/runtime-corejs3" "^7.12.1"
