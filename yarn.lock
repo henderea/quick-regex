@@ -3,9 +3,9 @@
 
 
 "@babel/runtime-corejs3@^7.12.1":
-  version "7.12.13"
-  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.12.13.tgz#53d09813b7c20d616caf258e9325550ff701c039"
-  integrity sha512-8fSpqYRETHATtNitsCXq8QQbKJP31/KnDl2Wz2Vtui9nKzjss2ysuZtyVsWjBtvkeEFo346gkwjYPab1hvrXkQ==
+  version "7.12.18"
+  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.12.18.tgz#e5663237e5658e4c09586995d2dd6d2c8cfd6fc0"
+  integrity sha512-ngR7yhNTjDxxe1VYmhqQqqXZWujGb6g0IoA4qeG6MxNGRnIw2Zo8ImY8HfaQ7l3T6GklWhdNfyhWk0C0iocdVA==
   dependencies:
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
@@ -22,12 +22,12 @@
   dependencies:
     xregexp "^5.0.1"
 
-"@henderea/simple-colors@^1.3.7":
-  version "1.3.7"
-  resolved "https://registry.yarnpkg.com/@henderea/simple-colors/-/simple-colors-1.3.7.tgz#418036559885b7df37b45b8fca91c274a7d0fe3a"
-  integrity sha512-yBY+RduoN7Wwu4/fexsjbVusrrx6IGdJLN8a4FQnM9MSOoJAPINdujZ//GjvFPytTvgwwiz4srYgDgPzyG74MQ==
+"@henderea/simple-colors@^1.4.3":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@henderea/simple-colors/-/simple-colors-1.4.3.tgz#c59f1e937ea9b93cd58d2784962623ac53a7caff"
+  integrity sha512-tTwuR/XE78bJX7eCUPeAiIaBGVEuR3U7RKup1Pb/QEgDtmYJ5Z/0B6eVhxsqsi0S+X2VxOzz1I/56gmrRp7C/g==
   dependencies:
-    lodash "^4.17.20"
+    lodash "^4.17.21"
     strip-ansi "^6.0.0"
     supports-color "^8.1.1"
 
@@ -62,9 +62,9 @@ concat-stream@^2.0.0:
     typedarray "^0.0.6"
 
 core-js-pure@^3.0.0:
-  version "3.8.3"
-  resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.8.3.tgz#10e9e3b2592ecaede4283e8f3ad7020811587c02"
-  integrity sha512-V5qQZVAr9K0xu7jXg1M7qTEwuxUgqr7dUOezGaNa7i+Xn9oXAU/d1fzqD9ObuwpVQOaorO5s70ckyi1woP9lVA==
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.9.0.tgz#326cc74e1fef8b7443a6a793ddb0adfcd81f9efb"
+  integrity sha512-3pEcmMZC9Cq0D4ZBh3pe2HLtqxpGNJBLXF/kZ2YzK17RbKp94w0HFbdbSx8H8kAlZG5k76hvLrkPm57Uyef+kg==
 
 has-flag@^4.0.0:
   version "4.0.0"
@@ -88,10 +88,10 @@ jschardet@^2.2.1:
   resolved "https://registry.yarnpkg.com/jschardet/-/jschardet-2.2.1.tgz#03b0264669a90c7a5c436a68c5a7d4e4cb0c9823"
   integrity sha512-Ks2JNuUJoc7PGaZ7bVFtSEvOcr0rBq6Q1J5/7+zKWLT+g+4zziL63O0jg7y2jxhzIa1LVsHUbPXrbaWmz9iwDw==
 
-lodash@^4.17.20:
-  version "4.17.20"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
-  integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
+lodash@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 readable-stream@^3.0.2:
   version "3.6.0"
