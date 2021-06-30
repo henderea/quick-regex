@@ -9,13 +9,13 @@
   "private": false,
   "devDependencies": {
     "@henderea/arg-helper": "^1.2.1",
-    "@henderea/regex-util": "^1.2.4",
+    "@henderea/regex-util": "^1.2.6",
     "@henderea/simple-colors": "^1.4.3",
-    "@vercel/ncc": "^0.27.0",
+    "@vercel/ncc": "^0.28.6",
     "arg": "^5.0.0",
     "concat-stream": "^2.0.0",
-    "iconv-lite": "^0.6.2",
-    "jschardet": "^2.2.1"
+    "iconv-lite": "^0.6.3",
+    "jschardet": "^3.0.0"
   },
   "scripts": {
     "ncc:build": "yarn ncc:build:release",

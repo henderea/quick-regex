@@ -3,11 +3,11 @@
 
 
 "@babel/runtime-corejs3@^7.12.1":
-  version "7.12.18"
-  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.12.18.tgz#e5663237e5658e4c09586995d2dd6d2c8cfd6fc0"
-  integrity sha512-ngR7yhNTjDxxe1VYmhqQqqXZWujGb6g0IoA4qeG6MxNGRnIw2Zo8ImY8HfaQ7l3T6GklWhdNfyhWk0C0iocdVA==
+  version "7.14.7"
+  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.14.7.tgz#0ef292bbce40ca00f874c9724ef175a12476465c"
+  integrity sha512-Wvzcw4mBYbTagyBVZpAJWI06auSIj033T/yNE0Zn1xcup83MieCddZA7ls3kme17L4NOGBrQ09Q+nKB41RLWBA==
   dependencies:
-    core-js-pure "^3.0.0"
+    core-js-pure "^3.15.0"
     regenerator-runtime "^0.13.4"
 
 "@henderea/arg-helper@^1.2.1":
@@ -15,10 +15,10 @@
   resolved "https://registry.yarnpkg.com/@henderea/arg-helper/-/arg-helper-1.2.1.tgz#c04f96f1153b6dc0d44e0d564a076c873186c7bb"
   integrity sha512-odhIeuhG/91i96i9zyh4+7ev4Cc9W0xH2JHUt7hdaiJ7Z/EnDAWM9uUTmNWIEepuFn5PzhVIeL1wqAJPMp5EUA==
 
-"@henderea/regex-util@^1.2.4":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@henderea/regex-util/-/regex-util-1.2.4.tgz#f5c86f148494168fd9bed5e21aa2bfbfbe9d4236"
-  integrity sha512-F0wNE2NO8acbsshrdYRpwNVSfbPmAQSTM/ldI5Hcw2uTb8sDEIYa5lle/eJ35T42RIEAfd6/FOMhpDITXIhGaQ==
+"@henderea/regex-util@^1.2.6":
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/@henderea/regex-util/-/regex-util-1.2.6.tgz#a72340bfc02d6d9affe992a29e2cadcc3e40b656"
+  integrity sha512-Fggfa61Lhera3CORAXi3XyvH8TVTErb8rjPYyVp7BEGDeXLBYxxe56g6ImKVHhY2vsTuCKiUVtuiw4x7R3WQbQ==
   dependencies:
     xregexp "^5.0.1"
 
@@ -31,10 +31,10 @@
     strip-ansi "^6.0.0"
     supports-color "^8.1.1"
 
-"@vercel/ncc@^0.27.0":
-  version "0.27.0"
-  resolved "https://registry.yarnpkg.com/@vercel/ncc/-/ncc-0.27.0.tgz#c0cfeebb0bebb56052719efa4a0ecc090a932c76"
-  integrity sha512-DllIJQapnU2YwewIhh/4dYesmMQw3h2cFtabECc/zSJHqUbNa0eJuEkRa6DXbZvh1YPWBtYQoPV17NlDpBw1Vw==
+"@vercel/ncc@^0.28.6":
+  version "0.28.6"
+  resolved "https://registry.yarnpkg.com/@vercel/ncc/-/ncc-0.28.6.tgz#073c0ce8e0269210c0a9f180fb0bf949eecc20e0"
+  integrity sha512-t4BoSSuyK8BZaUE0gV18V6bkFs4st7baumtFGa50dv1tMu2GDBEBF8sUZaKBdKiL6DzJ2D2+XVCwYWWDcQOYdQ==
 
 ansi-regex@^5.0.0:
   version "5.0.0"
@@ -61,20 +61,20 @@ concat-stream@^2.0.0:
     readable-stream "^3.0.2"
     typedarray "^0.0.6"
 
-core-js-pure@^3.0.0:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.9.0.tgz#326cc74e1fef8b7443a6a793ddb0adfcd81f9efb"
-  integrity sha512-3pEcmMZC9Cq0D4ZBh3pe2HLtqxpGNJBLXF/kZ2YzK17RbKp94w0HFbdbSx8H8kAlZG5k76hvLrkPm57Uyef+kg==
+core-js-pure@^3.15.0:
+  version "3.15.2"
+  resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.15.2.tgz#c8e0874822705f3385d3197af9348f7c9ae2e3ce"
+  integrity sha512-D42L7RYh1J2grW8ttxoY1+17Y4wXZeKe7uyplAI3FkNQyI5OgBIAjUfFiTPfL1rs0qLpxaabITNbjKl1Sp82tA==
 
 has-flag@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-4.0.0.tgz#944771fd9c81c81265c4d6941860da06bb59479b"
   integrity sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==
 
-iconv-lite@^0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.6.2.tgz#ce13d1875b0c3a674bd6a04b7f76b01b1b6ded01"
-  integrity sha512-2y91h5OpQlolefMPmUlivelittSWy0rP+oYVpn6A7GwVHNE8AWzoYOBNmlwks3LobaJxgHCYZAnyNo2GgpNRNQ==
+iconv-lite@^0.6.3:
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.6.3.tgz#a52f80bf38da1952eb5c681790719871a1a72501"
+  integrity sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==
   dependencies:
     safer-buffer ">= 2.1.2 < 3.0.0"
 
@@ -83,10 +83,10 @@ inherits@^2.0.3:
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
   integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
 
-jschardet@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/jschardet/-/jschardet-2.2.1.tgz#03b0264669a90c7a5c436a68c5a7d4e4cb0c9823"
-  integrity sha512-Ks2JNuUJoc7PGaZ7bVFtSEvOcr0rBq6Q1J5/7+zKWLT+g+4zziL63O0jg7y2jxhzIa1LVsHUbPXrbaWmz9iwDw==
+jschardet@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/jschardet/-/jschardet-3.0.0.tgz#898d2332e45ebabbdb6bf2feece9feea9a99e882"
+  integrity sha512-lJH6tJ77V8Nzd5QWRkFYCLc13a3vADkh3r/Fi8HupZGWk2OVVDfnZP8V/VgQgZ+lzW0kG2UGb5hFgt3V3ndotQ==
 
 lodash@^4.17.21:
   version "4.17.21"
@@ -149,8 +149,8 @@ util-deprecate@^1.0.1:
   integrity sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=
 
 xregexp@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/xregexp/-/xregexp-5.0.1.tgz#b2f20e87790876585fb4103e91cb163a63cd2547"
-  integrity sha512-flG0ykxHQLOfF886GpnY26WQkj4/RmcxYvoVcSFbg+1lPMdnXEPoTKuLzw1olKnJ+o2Wc1+RCD1oktV4bYzVlQ==
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/xregexp/-/xregexp-5.0.2.tgz#798aa7757836f39cdbdeeba3daf94d75f7a9dcc1"
+  integrity sha512-JPNfN40YMNSDxZrahMrmtNH1QqPJp0/qNeEJM2nnOlhcBdfCCjekPYFV2OnwKxwvpEYglH1RBotbpRRaEuCG8Q==
   dependencies:
     "@babel/runtime-corejs3" "^7.12.1"
