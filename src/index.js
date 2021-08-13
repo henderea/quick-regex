@@ -139,7 +139,7 @@ try {
                 }
             });
         }
-        if(!input) {
+        if(!input && input !== '') {
             if(options.oneLine || options.test || !options.stream) {
                 input = await readAll(inputStream);
             } else {
