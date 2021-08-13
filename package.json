@@ -11,7 +11,7 @@
     "@henderea/arg-helper": "^1.2.1",
     "@henderea/regex-util": "^1.2.6",
     "@henderea/simple-colors": "^1.4.3",
-    "@vercel/ncc": "^0.28.6",
+    "@vercel/ncc": "^0.29.1",
     "arg": "^5.0.0",
     "concat-stream": "^2.0.0",
     "iconv-lite": "^0.6.3",
