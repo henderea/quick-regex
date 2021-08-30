@@ -8,12 +8,17 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/eslint-parser": "^7.15.0",
     "@henderea/arg-helper": "^1.2.2",
     "@henderea/my-ncc": "^1.3.1",
     "@henderea/regex-util": "^1.2.6",
     "@henderea/simple-colors": "^2.0.2",
     "arg": "^5.0.1",
     "concat-stream": "^2.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-henderea": "1.0.7",
+    "eslint-plugin-import": "^2.24.2",
     "iconv-lite": "^0.6.3",
     "jschardet": "^3.0.0"
   },
@@ -25,12 +30,17 @@
     "ncc:build:debug:build": "my-ncc src/index.mjs -q -o dist -e detect-character-encoding",
     "ncc:build:release": "yarn ncc:clean && yarn ncc:build:release:build && yarn ncc:post-clean",
     "ncc:build:debug": "yarn ncc:clean && yarn ncc:build:debug:build && yarn ncc:post-clean",
-    "prepublishOnly": "yarn ncc:build"
+    "prepublishOnly": "yarn ncc:build",
+    "lint": "eslint --ext .js,.mjs src lib",
+    "lint:fix": "eslint --ext .js,.mjs --fix src lib"
   },
   "bin": {
     "quick-regex": "dist/index.js"
   },
   "files": [
     "dist/**/*"
-  ]
+  ],
+  "eslintConfig": {
+    "extends": "henderea"
+  }
 }
