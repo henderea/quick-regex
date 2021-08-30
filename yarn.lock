@@ -10,12 +10,22 @@
     core-js-pure "^3.16.0"
     regenerator-runtime "^0.13.4"
 
-"@henderea/arg-helper@^1.2.2":
+"@henderea/arg-helper@^1.2.1", "@henderea/arg-helper@^1.2.2":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@henderea/arg-helper/-/arg-helper-1.2.2.tgz#4c5b84a22e1a0c9ae486f6b7f5920a42ed70c482"
   integrity sha512-0+wGfzoGZLXmuQouFZBaZ//VhO/Do+ZAypJ01TP/grp+HXOJHLxfry1vMQBRPSNhoPB7oTt0fQs9rEnebJWEqQ==
   dependencies:
     escalade "^3.1.1"
+
+"@henderea/my-ncc@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@henderea/my-ncc/-/my-ncc-1.3.1.tgz#b049d34d796711447798c1dcc517d19004a14c96"
+  integrity sha512-1sswV3vhlunnMo2+KuELbkbOZhtaZsv9grnodpX+2hjAqY2x21CnqA4upaIoqPmMWjwqHQAXSqJ1Lx5ynIZ3iA==
+  dependencies:
+    "@henderea/arg-helper" "^1.2.1"
+    "@henderea/simple-colors" "^2.0.0"
+    "@vercel/ncc" "^0.30.0"
+    arg "^5.0.1"
 
 "@henderea/regex-util@^1.2.6":
   version "1.2.6"
@@ -24,24 +34,24 @@
   dependencies:
     xregexp "^5.0.1"
 
-"@henderea/simple-colors@^1.4.3":
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/@henderea/simple-colors/-/simple-colors-1.4.3.tgz#c59f1e937ea9b93cd58d2784962623ac53a7caff"
-  integrity sha512-tTwuR/XE78bJX7eCUPeAiIaBGVEuR3U7RKup1Pb/QEgDtmYJ5Z/0B6eVhxsqsi0S+X2VxOzz1I/56gmrRp7C/g==
+"@henderea/simple-colors@^2.0.0", "@henderea/simple-colors@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@henderea/simple-colors/-/simple-colors-2.0.2.tgz#563fdac1bf1fedfdf74cbc632d183578992a961e"
+  integrity sha512-AV9UcGJ9bSmlPHumO/GqLC/Qzc0k1VH1ftFNAr+64RkqVjJ7BslGtE/ENJvnKs2/DifeP32QMdHjFiPPtk9PtA==
   dependencies:
     lodash "^4.17.21"
-    strip-ansi "^6.0.0"
-    supports-color "^8.1.1"
+    strip-ansi "^7.0.0"
+    supports-color "^9.0.2"
 
 "@vercel/ncc@^0.30.0":
   version "0.30.0"
   resolved "https://registry.yarnpkg.com/@vercel/ncc/-/ncc-0.30.0.tgz#e940f5cfe30dfd0b7b30c4d7f9f6f00fcf754577"
   integrity sha512-16ePj2GkwjomvE0HLL5ny+d+sudOwvZNYW8vjpMh3cyWdFxoMI8KSQiolVxeHBULbU1C5mVxLK5nL9NtnnpIew==
 
-ansi-regex@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-5.0.0.tgz#388539f55179bf39339c81af30a654d69f87cb75"
-  integrity sha512-bY6fj56OUQ0hU1KjFNDQuJFezqKdrAyFdIevADiqrWHwSlbmBNMHp5ak2f40Pm8JTFyM2mqxkG6ngkHO11f/lg==
+ansi-regex@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-6.0.0.tgz#ecc7f5933cbe5ac7b33e209a5ff409ab1669c6b2"
+  integrity sha512-tAaOSrWCHF+1Ear1Z4wnJCXA9GGox4K6Ic85a5qalES2aeEwQGr7UC93mwef49536PkCYjzkp0zIxfFvexJ6zQ==
 
 arg@^5.0.1:
   version "5.0.1"
@@ -73,10 +83,10 @@ escalade@^3.1.1:
   resolved "https://registry.yarnpkg.com/escalade/-/escalade-3.1.1.tgz#d8cfdc7000965c5a0174b4a82eaa5c0552742e40"
   integrity sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==
 
-has-flag@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-4.0.0.tgz#944771fd9c81c81265c4d6941860da06bb59479b"
-  integrity sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==
+has-flag@^5.0.0:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-5.0.1.tgz#5483db2ae02a472d1d0691462fc587d1843cd940"
+  integrity sha512-CsNUt5x9LUdx6hnk/E2SZLsDyvfqANZSUq4+D3D8RzDJ2M+HDTIkF60ibS1vHaK55vzgiZw1bEPFG9yH7l33wA==
 
 iconv-lite@^0.6.3:
   version "0.6.3"
@@ -131,19 +141,19 @@ string_decoder@^1.1.1:
   dependencies:
     safe-buffer "~5.2.0"
 
-strip-ansi@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.0.tgz#0b1571dd7669ccd4f3e06e14ef1eed26225ae532"
-  integrity sha512-AuvKTrTfQNYNIctbR1K/YGTR1756GycPsg7b9bdV9Duqur4gv6aKqHXah67Z8ImS7WEz5QVcOtlfW2rZEugt6w==
+strip-ansi@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-7.0.0.tgz#1dc49b980c3a4100366617adac59327eefdefcb0"
+  integrity sha512-UhDTSnGF1dc0DRbUqr1aXwNoY3RgVkSWG8BrpnuFIxhP57IqbS7IRta2Gfiavds4yCxc5+fEAVVOgBZWnYkvzg==
   dependencies:
-    ansi-regex "^5.0.0"
+    ansi-regex "^6.0.0"
 
-supports-color@^8.1.1:
-  version "8.1.1"
-  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-8.1.1.tgz#cd6fc17e28500cff56c1b86c0a7fd4a54a73005c"
-  integrity sha512-MpUEN2OodtUzxvKQl72cUF7RQ5EiHsGvSsVG0ia9c5RbWGL2CI4C7EpPS8UTBIplnlzZiNuV56w+FuNxy3ty2Q==
+supports-color@^9.0.2:
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-9.0.2.tgz#50f082888e4b0a4e2ccd2d0b4f9ef4efcd332485"
+  integrity sha512-ii6tc8ImGFrgMPYq7RVAMKkhPo9vk8uA+D3oKbJq/3Pk2YSMv1+9dUAesa9UxMbxBTvxwKTQffBahNVNxEvM8Q==
   dependencies:
-    has-flag "^4.0.0"
+    has-flag "^5.0.0"
 
 typedarray@^0.0.6:
   version "0.0.6"

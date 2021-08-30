@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
-const stream = require('stream');
-const { argParser } = require('@henderea/arg-helper')(require('arg'));
-const { doMultiReplace } = require('@henderea/regex-util');
-const { readAll, readLines } = require('../lib/readInput');
-const { helpText, styles } = require('../lib/helpText');
+import fs from 'fs';
+import stream from 'stream';
+import { fileURLToPath } from 'url';
+
+import { doMultiReplace } from '@henderea/regex-util';
+
+import { argParser } from '../lib/arg-helper.mjs';
+import { readAll, readLines } from '../lib/readInput.mjs';
+import { helpText, styles } from '../lib/helpText.mjs';
 const { red, green, bold } = styles;
 
 let options = null;
@@ -29,7 +31,7 @@ try {
         .bool('reverseGrep', '--reverse-grep', '-G')
         .bool('stream', '--stream', '-S')
         .help(helpText, '--help', '-h')
-        .findVersion(eval('__dirname'), '--version')
+        .findVersion(fileURLToPath(import.meta.url), '--version')
         .argv;
 } catch(e) {
     console.error(red.bright(`${bold('Error in arguments:')} ${e.message}`));
