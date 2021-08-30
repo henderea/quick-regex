@@ -21,8 +21,8 @@
     "ncc:build": "yarn ncc:build:release",
     "ncc:clean": "rm -rf dist",
     "ncc:post-clean": "rm -rf dist/*.hbs && rm -rf dist/locales",
-    "ncc:build:release:build": "my-ncc src/index.js -m -q -o dist -e detect-character-encoding",
-    "ncc:build:debug:build": "my-ncc src/index.js -q -o dist -e detect-character-encoding",
+    "ncc:build:release:build": "my-ncc src/index.mjs -m -q -o dist -e detect-character-encoding",
+    "ncc:build:debug:build": "my-ncc src/index.mjs -q -o dist -e detect-character-encoding",
     "ncc:build:release": "yarn ncc:clean && yarn ncc:build:release:build && yarn ncc:post-clean",
     "ncc:build:debug": "yarn ncc:clean && yarn ncc:build:debug:build && yarn ncc:post-clean",
     "prepublishOnly": "yarn ncc:build"
