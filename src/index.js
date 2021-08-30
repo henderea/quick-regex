@@ -29,7 +29,7 @@ try {
         .bool('reverseGrep', '--reverse-grep', '-G')
         .bool('stream', '--stream', '-S')
         .help(helpText, '--help', '-h')
-        .version(path.join(eval('__dirname'), '../package.json'), '--version')
+        .findVersion(eval('__dirname'), '--version')
         .argv;
 } catch(e) {
     console.error(red.bright(`${bold('Error in arguments:')} ${e.message}`));
