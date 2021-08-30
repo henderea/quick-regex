@@ -8,11 +8,11 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
-    "@henderea/arg-helper": "^1.2.1",
+    "@henderea/arg-helper": "^1.2.2",
     "@henderea/regex-util": "^1.2.6",
     "@henderea/simple-colors": "^1.4.3",
-    "@vercel/ncc": "^0.29.1",
-    "arg": "^5.0.0",
+    "@vercel/ncc": "^0.30.0",
+    "arg": "^5.0.1",
     "concat-stream": "^2.0.0",
     "iconv-lite": "^0.6.3",
     "jschardet": "^3.0.0"
