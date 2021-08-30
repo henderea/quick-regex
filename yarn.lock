@@ -240,20 +240,20 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@henderea/arg-helper@^1.2.1", "@henderea/arg-helper@^1.2.2":
+"@henderea/arg-helper@^1.2.2":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@henderea/arg-helper/-/arg-helper-1.2.2.tgz#4c5b84a22e1a0c9ae486f6b7f5920a42ed70c482"
   integrity sha512-0+wGfzoGZLXmuQouFZBaZ//VhO/Do+ZAypJ01TP/grp+HXOJHLxfry1vMQBRPSNhoPB7oTt0fQs9rEnebJWEqQ==
   dependencies:
     escalade "^3.1.1"
 
-"@henderea/my-ncc@^1.3.1":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@henderea/my-ncc/-/my-ncc-1.3.1.tgz#b049d34d796711447798c1dcc517d19004a14c96"
-  integrity sha512-1sswV3vhlunnMo2+KuELbkbOZhtaZsv9grnodpX+2hjAqY2x21CnqA4upaIoqPmMWjwqHQAXSqJ1Lx5ynIZ3iA==
+"@henderea/my-ncc@^1.3.2":
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@henderea/my-ncc/-/my-ncc-1.3.2.tgz#f61975fbf589b392a08af4c2a8ba98464f5d9a69"
+  integrity sha512-5686xGEuo0f75BZenwYjvkrx9JUKGrt2wtS/+25NyO9t9Ihxe5/9g+LbDwU9VXwS9vpdPNXOargxMuH+B3cW0A==
   dependencies:
-    "@henderea/arg-helper" "^1.2.1"
-    "@henderea/simple-colors" "^2.0.0"
+    "@henderea/arg-helper" "^1.2.2"
+    "@henderea/simple-colors" "^2.0.2"
     "@vercel/ncc" "^0.30.0"
     arg "^5.0.1"
 
@@ -264,7 +264,7 @@
   dependencies:
     xregexp "^5.0.1"
 
-"@henderea/simple-colors@^2.0.0", "@henderea/simple-colors@^2.0.2":
+"@henderea/simple-colors@^2.0.2":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@henderea/simple-colors/-/simple-colors-2.0.2.tgz#563fdac1bf1fedfdf74cbc632d183578992a961e"
   integrity sha512-AV9UcGJ9bSmlPHumO/GqLC/Qzc0k1VH1ftFNAr+64RkqVjJ7BslGtE/ENJvnKs2/DifeP32QMdHjFiPPtk9PtA==

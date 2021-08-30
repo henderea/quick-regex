@@ -11,7 +11,7 @@
     "@babel/core": "^7.15.0",
     "@babel/eslint-parser": "^7.15.0",
     "@henderea/arg-helper": "^1.2.2",
-    "@henderea/my-ncc": "^1.3.1",
+    "@henderea/my-ncc": "^1.3.2",
     "@henderea/regex-util": "^1.2.6",
     "@henderea/simple-colors": "^2.0.2",
     "arg": "^5.0.1",
