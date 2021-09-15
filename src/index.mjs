@@ -11,6 +11,14 @@ import { readAll, readLines } from '../lib/readInput.mjs';
 import { helpText, styles } from '../lib/helpText.mjs';
 const { red, green, bold } = styles;
 
+let dirname = fileURLToPath(import.meta.url);
+
+try {
+  dirname = eval('__dirname');
+} catch {
+  //empty
+}
+
 let options = null;
 try {
   options = argParser()
@@ -31,7 +39,7 @@ try {
     .bool('reverseGrep', '--reverse-grep', '-G')
     .bool('stream', '--stream', '-S')
     .help(helpText, '--help', '-h')
-    .findVersion(fileURLToPath(import.meta.url), '--version')
+    .findVersion(dirname, '--version')
     .argv;
 } catch (e) {
   console.error(red.bright(`${bold('Error in arguments:')} ${e.message}`));
