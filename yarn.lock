@@ -247,20 +247,20 @@
   dependencies:
     escalade "^3.1.1"
 
-"@henderea/my-ncc@^1.3.2":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@henderea/my-ncc/-/my-ncc-1.3.2.tgz#f61975fbf589b392a08af4c2a8ba98464f5d9a69"
-  integrity sha512-5686xGEuo0f75BZenwYjvkrx9JUKGrt2wtS/+25NyO9t9Ihxe5/9g+LbDwU9VXwS9vpdPNXOargxMuH+B3cW0A==
+"@henderea/my-ncc@^1.3.3":
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@henderea/my-ncc/-/my-ncc-1.3.3.tgz#ca4751b3e9b8d5679206b3062fb1dd69d35cda40"
+  integrity sha512-fhYzPmqoQdfXT/T9Hw4Awsq0tiFIeYGyIwksIXEMF6C7x/3fHdi51tR2dR4RKkk5mFIH5rE6/Pi9A8ow3e4Ipg==
   dependencies:
     "@henderea/arg-helper" "^1.2.2"
     "@henderea/simple-colors" "^2.0.2"
     "@vercel/ncc" "^0.30.0"
     arg "^5.0.1"
 
-"@henderea/regex-util@^1.2.6":
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/@henderea/regex-util/-/regex-util-1.2.6.tgz#a72340bfc02d6d9affe992a29e2cadcc3e40b656"
-  integrity sha512-Fggfa61Lhera3CORAXi3XyvH8TVTErb8rjPYyVp7BEGDeXLBYxxe56g6ImKVHhY2vsTuCKiUVtuiw4x7R3WQbQ==
+"@henderea/regex-util@^1.2.7":
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/@henderea/regex-util/-/regex-util-1.2.7.tgz#e8f0c3b63acb923009d8d46ab4ac1288ad55baeb"
+  integrity sha512-32X9u5bLuE3Jl4Him6wDbO0CTW2ZYM4zvWC9Id9N03FEdVa2QwpBu1044yzATgo+vf5Oi/tUkWQqmcuhinxiRg==
   dependencies:
     xregexp "^5.0.1"
 
