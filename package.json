@@ -8,19 +8,20 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
-    "@babel/core": "^7.15.0",
-    "@babel/eslint-parser": "^7.15.0",
     "@henderea/arg-helper": "^1.2.2",
     "@henderea/regex-util": "^1.2.7",
     "@henderea/simple-colors": "^2.0.2",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/parser": "^6.4.0",
     "@vercel/ncc": "^0.36.1",
     "arg": "^5.0.1",
     "concat-stream": "^2.0.0",
-    "eslint": "^7.32.0",
-    "eslint-config-henderea": "1.0.7",
-    "eslint-plugin-import": "^2.24.2",
+    "eslint": "^8.47.0",
+    "eslint-config-henderea": "1.1.11",
+    "eslint-plugin-import": "^2.28.0",
     "iconv-lite": "^0.6.3",
-    "jschardet": "^3.0.0"
+    "jschardet": "^3.0.0",
+    "typescript": "^5.1.6"
   },
   "scripts": {
     "ncc:build": "yarn ncc:build:release",
