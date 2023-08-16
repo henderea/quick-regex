@@ -11,9 +11,9 @@
     "@babel/core": "^7.15.0",
     "@babel/eslint-parser": "^7.15.0",
     "@henderea/arg-helper": "^1.2.2",
-    "@henderea/my-ncc": "^1.3.3",
     "@henderea/regex-util": "^1.2.7",
     "@henderea/simple-colors": "^2.0.2",
+    "@vercel/ncc": "^0.36.1",
     "arg": "^5.0.1",
     "concat-stream": "^2.0.0",
     "eslint": "^7.32.0",
@@ -26,8 +26,8 @@
     "ncc:build": "yarn ncc:build:release",
     "ncc:clean": "rm -rf dist",
     "ncc:post-clean": "rm -rf dist/*.hbs && rm -rf dist/locales",
-    "ncc:build:release:build": "my-ncc src/index.mjs -m -q -o dist -e detect-character-encoding",
-    "ncc:build:debug:build": "my-ncc src/index.mjs -q -o dist -e detect-character-encoding",
+    "ncc:build:release:build": "ncc build src/index.mjs -m -q -o dist -e detect-character-encoding",
+    "ncc:build:debug:build": "ncc build src/index.mjs -q -o dist -e detect-character-encoding",
     "ncc:build:release": "yarn ncc:clean && yarn ncc:build:release:build && yarn ncc:post-clean",
     "ncc:build:debug": "yarn ncc:clean && yarn ncc:build:debug:build && yarn ncc:post-clean",
     "prepublishOnly": "yarn ncc:build",
@@ -35,7 +35,7 @@
     "lint:fix": "eslint --ext .js,.mjs --fix src lib"
   },
   "bin": {
-    "quick-regex": "dist/index.js"
+    "quick-regex": "dist/index.mjs"
   },
   "files": [
     "dist/**/*"
