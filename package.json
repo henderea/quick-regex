@@ -15,17 +15,17 @@
     "@henderea/arg-helper": "^1.2.4",
     "@henderea/regex-util": "^1.2.8",
     "@henderea/simple-colors": "^2.0.6",
-    "@typescript-eslint/eslint-plugin": "^6.4.0",
-    "@typescript-eslint/parser": "^6.4.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
     "@vercel/ncc": "^0.36.1",
     "arg": "^5.0.2",
     "concat-stream": "^2.0.0",
-    "eslint": "^8.47.0",
-    "eslint-config-henderea": "1.1.11",
-    "eslint-plugin-import": "^2.28.0",
+    "eslint": "^8.50.0",
+    "eslint-config-henderea": "1.1.16",
+    "eslint-plugin-import": "^2.28.1",
     "iconv-lite": "^0.6.3",
     "jschardet": "^3.0.0",
-    "typescript": "^5.1.6"
+    "typescript": "^5.2.2"
   },
   "scripts": {
     "ncc:build": "yarn ncc:build:release",
