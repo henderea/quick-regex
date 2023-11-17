@@ -13,6 +13,7 @@
   "engineStrict": true,
   "devDependencies": {
     "@henderea/arg-helper": "^1.2.5",
+    "@henderea/build-assets": "^1.0.2",
     "@henderea/regex-util": "^1.2.8",
     "@henderea/simple-colors": "^2.0.6",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
@@ -28,13 +29,14 @@
     "typescript": "^5.2.2"
   },
   "scripts": {
+    "assets:build": "build-assets",
     "ncc:build": "yarn ncc:build:release",
     "ncc:clean": "rm -rf dist",
     "ncc:post-clean": "rm -rf dist/*.hbs && rm -rf dist/locales",
     "ncc:build:release:build": "ncc build src/index.mjs -m -q -o dist -e detect-character-encoding",
     "ncc:build:debug:build": "ncc build src/index.mjs -q -o dist -e detect-character-encoding",
-    "ncc:build:release": "yarn ncc:clean && yarn ncc:build:release:build && yarn ncc:post-clean",
-    "ncc:build:debug": "yarn ncc:clean && yarn ncc:build:debug:build && yarn ncc:post-clean",
+    "ncc:build:release": "yarn assets:build && yarn ncc:clean && yarn ncc:build:release:build && yarn ncc:post-clean",
+    "ncc:build:debug": "yarn assets:build && yarn ncc:clean && yarn ncc:build:debug:build && yarn ncc:post-clean",
     "prepublishOnly": "yarn ncc:build",
     "lint": "eslint --ext .js,.mjs src lib",
     "lint:fix": "eslint --ext .js,.mjs --fix src lib"

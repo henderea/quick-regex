@@ -54,6 +54,11 @@
   dependencies:
     escalade "^3.1.1"
 
+"@henderea/build-assets@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@henderea/build-assets/-/build-assets-1.0.2.tgz#0fa492e509c6c393c74fb4490a016b8ffd813940"
+  integrity sha512-t2zvo27ZZN4/rZ1WuEm+pwoarz21yN6U801gxOH0V6mOtFgThtMZf3tuj9onCP5zywUf2/cK4OLgYWvg65FelA==
+
 "@henderea/regex-util@^1.2.8":
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/@henderea/regex-util/-/regex-util-1.2.8.tgz#9919e7c97cbe3d3ac845c0c138b62aae1d8d4cc0"

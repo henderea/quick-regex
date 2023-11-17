@@ -1,0 +1,8 @@
+{
+  "assets": [
+    {
+      "type": "version",
+      "packageJson": "package.json"
+    }
+  ]
+}

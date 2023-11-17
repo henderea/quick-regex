@@ -2,7 +2,6 @@
 
 import fs from 'fs';
 import stream from 'stream';
-import { fileURLToPath } from 'url';
 
 import { doMultiReplace } from '@henderea/regex-util';
 
@@ -11,13 +10,7 @@ import { readAll, readLines } from '../lib/readInput.mjs';
 import { helpText, styles } from '../lib/helpText.mjs';
 const { red, green, bold } = styles;
 
-let dirname = fileURLToPath(import.meta.url);
-
-try {
-  dirname = eval('__dirname');
-} catch {
-  //empty
-}
+import version from '../assets/version.mjs';
 
 let options = null;
 try {
@@ -39,7 +32,7 @@ try {
     .bool('reverseGrep', '--reverse-grep', '-G')
     .bool('stream', '--stream', '-S')
     .help(helpText, '--help', '-h')
-    .findVersion(dirname, '--version')
+    .withVersion(version, '--version')
     .argv;
 } catch (e) {
   console.error(red.bright(`${bold('Error in arguments:')} ${e.message}`));
@@ -122,7 +115,6 @@ try {
       cleanup();
       console.error(`You must provide -m or --match in ${options.reverseGrep ? 'reverse-' : ''}grep mode.`);
       process.exit(1);
-      return;
     }
     let processLines = (lines) => {
       let outputLines = lines.filter((line) => (matchRegex.test(line) || matchRegex.test(line.replace(/\r?\n$/, ''))) ? !options.reverseGrep : options.reverseGrep).join('');
@@ -156,7 +148,6 @@ try {
         if(subs.length == 0) {
           console.error('You must provide -m/--match and -r/--replace, or -s/--subs, in the default replace mode.');
           process.exit(1);
-          return;
         }
         await readLines(inputStream, processLines);
         cleanup();
@@ -168,7 +159,6 @@ try {
       if(!matchRegex) {
         console.error('You must provide -m or --match in test mode.');
         process.exit(1);
-        return;
       }
       let matches = matchRegex.test(input);
       if(matches) {
@@ -183,7 +173,6 @@ try {
         cleanup();
         console.error('You must provide -m/--match and -r/--replace, or -s/--subs, in the default replace mode.');
         process.exit(1);
-        return;
       }
       processLines([input]);
       cleanup();
