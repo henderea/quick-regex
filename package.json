@@ -12,10 +12,10 @@
   },
   "engineStrict": true,
   "devDependencies": {
-    "@henderea/arg-helper": "^1.2.5",
-    "@henderea/build-assets": "^1.0.2",
+    "@henderea/arg-helper": "^1.2.6",
+    "@henderea/build-assets": "^1.1.0",
     "@henderea/regex-util": "^1.2.8",
-    "@henderea/simple-colors": "^2.0.6",
+    "@henderea/simple-colors": "^2.1.2",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
     "@vercel/ncc": "^0.38.1",
