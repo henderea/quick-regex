@@ -30,14 +30,14 @@
   },
   "scripts": {
     "assets:build": "build-assets",
-    "ncc:build": "yarn ncc:build:release",
+    "ncc:build": "npm run ncc:build:release",
     "ncc:clean": "rm -rf dist",
     "ncc:post-clean": "rm -rf dist/*.hbs && rm -rf dist/locales",
     "ncc:build:release:build": "ncc build src/index.mjs -m -q -o dist -e detect-character-encoding",
     "ncc:build:debug:build": "ncc build src/index.mjs -q -o dist -e detect-character-encoding",
-    "ncc:build:release": "yarn assets:build && yarn ncc:clean && yarn ncc:build:release:build && yarn ncc:post-clean",
-    "ncc:build:debug": "yarn assets:build && yarn ncc:clean && yarn ncc:build:debug:build && yarn ncc:post-clean",
-    "prepublishOnly": "yarn ncc:build",
+    "ncc:build:release": "npm run assets:build && npm run ncc:clean && npm run ncc:build:release:build && npm run ncc:post-clean",
+    "ncc:build:debug": "npm run assets:build && npm run ncc:clean && npm run ncc:build:debug:build && npm run ncc:post-clean",
+    "prepublishOnly": "npm run ncc:build",
     "lint": "eslint --ext .js,.mjs src lib",
     "lint:fix": "eslint --ext .js,.mjs --fix src lib"
   },
