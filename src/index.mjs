@@ -21,6 +21,7 @@ try {
     .string('inputFile', '--input-file', '--file', '-f')
     .string('outputFile', '--output-file', '--out', '--dest', '-d')
     .strings('subs', '--subs', '-s')
+    .string('subsFile', '--subs-file', '-R')
     .bool('help', '--help', '-h')
     .bool('noCase', '--no-case', '-i')
     .bool('oneLine', '--one-line', '-o')
@@ -42,6 +43,24 @@ try {
   process.exit(1);
 }
 
+function processSub(sub, subs) {
+  if(/[|]{3}/.test(sub)) {
+    let parts = sub.split(/[|]{3}/, 2);
+    let match = new RegExp(parts[0], `g${options.noCase ? 'i' : ''}${options.oneLine ? '' : 'm'}`);
+    let replace = parts[1];
+    subs.push({ matchRegex: match, replaceString: replace });
+  } else {
+    let not = /^!/.test(sub);
+    if(not) {
+      sub = sub.slice(1);
+    } else {
+      sub = sub.replace(/^\\(\\*)!/, '$1!');
+    }
+    let match = new RegExp(sub, `g${options.noCase ? 'i' : ''}${options.oneLine ? '' : 'm'}`);
+    subs.push({ matchRegex: match, invertGrep: not });
+  }
+}
+
 (async () => {
   let subs = [];
   let matchRegex = null;
@@ -51,23 +70,25 @@ try {
       subs.push({ matchRegex, replaceString: options.replace });
     }
   }
+  if(options.subsFile && fs.existsSync(options.subsFile)) {
+    try {
+      const rawFileSubs = fs.readFileSync(options.subsFile, { encoding: 'utf8' });
+      if(rawFileSubs && rawFileSubs.trim().length > 0) {
+        const fileSubs = rawFileSubs.replace(/[\r\n]+$/, '').split(/\r?\n/g).filter((s) => s.length > 0);
+        if(fileSubs.length > 0) {
+          fileSubs.forEach((sub) => {
+            processSub(sub, subs);
+          });
+        }
+      }
+    } catch (e) {
+      console.error(red.bright(`${bold('Error reading substitution file:')} ${e.message}`));
+      process.exit(1);
+    }
+  }
   if(options.subs && Array.isArray(options.subs)) {
     options.subs.forEach((sub) => {
-      if(/[|]{3}/.test(sub)) {
-        let parts = sub.split(/[|]{3}/, 2);
-        let match = new RegExp(parts[0], `g${options.noCase ? 'i' : ''}${options.oneLine ? '' : 'm'}`);
-        let replace = parts[1];
-        subs.push({ matchRegex: match, replaceString: replace });
-      } else {
-        let not = /^!/.test(sub);
-        if(not) {
-          sub = sub.slice(1);
-        } else {
-          sub = sub.replace(/^\\(\\*)!/, '$1!');
-        }
-        let match = new RegExp(sub, `g${options.noCase ? 'i' : ''}${options.oneLine ? '' : 'm'}`);
-        subs.push({ matchRegex: match, invertGrep: not });
-      }
+      processSub(sub, subs);
     });
   }
   let inputStream = process.stdin;
