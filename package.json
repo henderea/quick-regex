@@ -41,16 +41,13 @@
     "ncc:build:release": "npm run assets:build && npm run ncc:clean && npm run ncc:build:release:build && npm run ncc:post-clean",
     "ncc:build:debug": "npm run assets:build && npm run ncc:clean && npm run ncc:build:debug:build && npm run ncc:post-clean",
     "prepublishOnly": "npm run ncc:build",
-    "lint": "eslint --ext .js,.mjs src lib",
-    "lint:fix": "eslint --ext .js,.mjs --fix src lib"
+    "lint": "eslint src lib",
+    "lint:fix": "eslint --fix src lib"
   },
   "bin": {
     "quick-regex": "dist/index.mjs"
   },
   "files": [
     "dist/**/*"
-  ],
-  "eslintConfig": {
-    "extends": "henderea"
-  }
+  ]
 }

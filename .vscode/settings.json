@@ -16,15 +16,8 @@
   },
   // tell the ESLint plugin to run on save
   "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit"
+    "source.fixAll.eslint": "always"
   },
-  // Optional BUT IMPORTANT: If you have the prettier extension enabled for other languages like CSS and HTML, turn it off for JS since we are doing it through Eslint already
-  "prettier.disableLanguages": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
   "editor.tabSize": 2,
-  "eslint.alwaysShowStatus": true,
+  "eslint.useFlatConfig": true,
 }
