@@ -23,7 +23,7 @@
     "arg": "^5.0.2",
     "concat-stream": "^2.0.0",
     "eslint": "^9.14.0",
-    "eslint-config-henderea": "^2.0.15",
+    "eslint-config-henderea": "^2.0.16",
     "eslint-plugin-import": "^2.31.0",
     "globals": "^15.12.0",
     "iconv-lite": "^0.6.3",
