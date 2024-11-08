@@ -14,7 +14,7 @@
   "devDependencies": {
     "@henderea/arg-helper": "^1.2.6",
     "@henderea/build-assets": "^1.1.0",
-    "@henderea/regex-util": "^1.2.11",
+    "@henderea/regex-util": "^1.2.12",
     "@henderea/simple-colors": "^2.1.2",
     "@stylistic/eslint-plugin": "^2.10.1",
     "@typescript-eslint/eslint-plugin": "^8.13.0",
